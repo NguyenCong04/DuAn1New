@@ -22,7 +22,13 @@
             android:name=".ThemDiaChiActivity"
             android:exported="false" />
         <activity
+            android:name=".SuaSanPhamAdmin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemSanPhamAdmin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
