@@ -1,11 +1,13 @@
 package congntph34559.fpoly.duan1newapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragDonDatHomeUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragGioHangUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragTrangChuUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentTrangChuAdmin;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +45,26 @@ public class MainActivity extends AppCompatActivity {
         //Khoải tạo fragment menager
         manager = getSupportFragmentManager();
 
-        //Gán fragment mặc định khi vào ứng dụng là màn trang chủ
-        manager.beginTransaction().replace(R.id.fragContainerView,new FragTrangChuUser()).commit();
+        //Phẩm quyền admin và user
+        //Nhận tên đăng nhập
+        String tenDangNhap = getIntent().getStringExtra("tenDangNhap");
+
+        assert tenDangNhap != null;
+        if (tenDangNhap.equals("admin")) {
+
+            layoutNavBottomAdmin.setVisibility(View.VISIBLE);
+            layoutNavBottomUser.setVisibility(View.GONE);
+            manager.beginTransaction().replace(R.id.fragContainerView,new FragmentTrangChuAdmin()).commit();
+
+        }else {
+
+            layoutNavBottomAdmin.setVisibility(View.GONE);
+            layoutNavBottomUser.setVisibility(View.VISIBLE);
+            manager.beginTransaction().replace(R.id.fragContainerView,new FragTrangChuUser()).commit();
+
+        }
+
+
 
 
         //Ánh xạ layout và textview cho navbottom của user
