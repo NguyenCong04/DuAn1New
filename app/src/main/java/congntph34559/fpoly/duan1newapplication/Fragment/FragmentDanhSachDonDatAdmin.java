@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -24,8 +25,9 @@ public class FragmentDanhSachDonDatAdmin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frg_danh_sach_don_admin, container, false);
         recyclerViewDsDonDat = view.findViewById(R.id.recyclerDanhSachHoaDonAdmin);
-
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         AdapterDanhSachDonDatAdmin adapterDanhSachDonDatAdmin = new AdapterDanhSachDonDatAdmin(getDSHD());
+        recyclerViewDsDonDat.setLayoutManager(layoutManager);
         recyclerViewDsDonDat.setAdapter(adapterDanhSachDonDatAdmin);
         return view;
     }

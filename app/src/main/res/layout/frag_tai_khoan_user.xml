@@ -47,7 +47,7 @@
         android:fontFamily="serif"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn"
+        android:id="@+id/btnThongTinCaNhan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -67,6 +67,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDiaChiCaNhan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -85,6 +86,7 @@
         android:paddingEnd="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnViCaNhan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -103,6 +105,7 @@
         android:paddingEnd="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLienHeGopY"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -121,6 +124,7 @@
         android:paddingEnd="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoiMatKhau"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -139,6 +143,7 @@
         android:paddingEnd="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDangXuat"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"

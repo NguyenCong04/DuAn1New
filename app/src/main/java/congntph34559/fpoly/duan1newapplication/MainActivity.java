@@ -13,7 +13,13 @@ import androidx.fragment.app.FragmentManager;
 
 import congntph34559.fpoly.duan1newapplication.Fragment.FragDonDatHomeUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragGioHangUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragTrangChuUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentCuTrangChuAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentDanhSachDonDatAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentThongKeAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentTrangChuAdmin;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -202,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 4){
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanUser()).commit();
 
                     //Ẩn đi các textView của các icon không đc click
                     tvTrangChuUser.setVisibility(View.GONE);
@@ -259,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 1) {
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentTrangChuAdmin()).commit();
+
                     tvThongKeAdmin.setVisibility(View.GONE);
                     tvDonDatAdmin.setVisibility(View.GONE);
                     tvTaiKhoanAdmin.setVisibility(View.GONE);
@@ -295,6 +304,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (index != 2) {
+
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentThongKeAdmin()).commit();
 
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvDonDatAdmin.setVisibility(View.GONE);
@@ -335,6 +346,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 3) {
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentDanhSachDonDatAdmin()).commit();
+
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvThongKeAdmin.setVisibility(View.GONE);
                     tvTaiKhoanAdmin.setVisibility(View.GONE);
@@ -370,6 +383,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (index != 4) {
+
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanAdmin()).commit();
 
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvThongKeAdmin.setVisibility(View.GONE);

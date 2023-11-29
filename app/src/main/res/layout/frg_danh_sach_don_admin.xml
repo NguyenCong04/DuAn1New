@@ -12,11 +12,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Damh sách đơn đặt"
+            android:text="Danh sách đơn đặt"
             android:textSize="23dp"
             android:textStyle="bold"
             android:fontFamily="serif"
-            android:paddingLeft="60dp"/>
+            android:layout_gravity="center_horizontal"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -30,11 +30,12 @@
             android:id="@+id/recyclerDanhSachHoaDonAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:background="#D7D4D4"
             />
 
         <TextView
@@ -48,14 +49,15 @@
 
         <View
             android:layout_width="match_parent"
+            android:background="#D7D4D4"
             android:layout_height="1dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDanhSahDonAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:backgroundTint="#00EEEE"
+            android:background="@drawable/cusstom_btn"
             android:text="Xác nhận đơn đặt"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"

@@ -31,13 +31,28 @@
             android:name=".DiaChiActivity"
             android:exported="false" />
         <activity
+            android:name=".DoiMatKhauUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ThemDiaChiActivity"
             android:exported="false" />
         <activity
             android:name=".SuaSanPhamAdmin"
             android:exported="false" />
         <activity
+            android:name=".LienHeGopYActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongTinCaNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViCuaToiActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CapNhatDonDatActivity"
             android:exported="false" />
         <activity
             android:name=".ThemSanPhamAdmin"

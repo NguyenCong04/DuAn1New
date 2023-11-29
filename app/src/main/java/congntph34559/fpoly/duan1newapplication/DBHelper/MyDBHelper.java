@@ -47,9 +47,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "    so_dien_thoai  TEXT    NOT NULL,\n" +
                 "    gioi_tinh      TEXT    NOT NULL,\n" +
                 "    ngay_sinh      TEXT    NOT NULL,\n" +
-                "    email          TEXT    NOT NULL\n" +
+                "    email          TEXT    NOT NULL,\n" +
+                "    dia_chi        TEXT    NOT NULL\n"+
                 ");\n";
         db.execSQL(sqlThongTinKhachHang);
+
+        db.execSQL("INSERT INTO tb_thong_tin_khach_hang VALUES(1, 'Nguyễn Tất Công', '0234561123', 'Nam', '22/8/2004', 'congnt04@gmail.com', 'Hà nội')");
 
         String sqlHoaDon = "CREATE TABLE tb_hoa_don (\n" +
                 "    id_hoa_don    INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
