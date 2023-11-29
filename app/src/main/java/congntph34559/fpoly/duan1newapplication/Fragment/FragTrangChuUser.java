@@ -1,10 +1,14 @@
 package congntph34559.fpoly.duan1newapplication.Fragment;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,22 +22,28 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import congntph34559.fpoly.duan1newapplication.Adapter.AdapterSliderTrangChuUser;
 import congntph34559.fpoly.duan1newapplication.Adapter.AdapterTrangChuUser;
+import congntph34559.fpoly.duan1newapplication.DAO.SanPhamTrangChuDAO;
 import congntph34559.fpoly.duan1newapplication.DTO.SanPhamTrangChuUserDTO;
 import congntph34559.fpoly.duan1newapplication.DTO.SliderDTO;
+import congntph34559.fpoly.duan1newapplication.DanhSachSanPhamUseActivity;
 import congntph34559.fpoly.duan1newapplication.R;
 import me.relex.circleindicator.CircleIndicator3;
 
 
 public class FragTrangChuUser extends Fragment {
 
-    private TextView tvXemThem;
+    private TextView tvXemThem,tvName;
     private ViewPager2 viewPager2;
     private CircleIndicator3 circleIndicator3;
     private RecyclerView recyclerView;
     private AdapterTrangChuUser adapterTrangChuUser;
+    private LinearLayout layoutRau,layoutCu,layoutQua,layoutHat;
+    private SanPhamTrangChuDAO sanPhamTrangChuDAO;
+    private  List<SanPhamTrangChuUserDTO> list;
 
     @Nullable
     @Override
@@ -41,12 +51,26 @@ public class FragTrangChuUser extends Fragment {
         return inflater.inflate(R.layout.frag_trang_chu_user,container,false);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         tvXemThem = view.findViewById(R.id.tvXemThem);
+        layoutCu = view.findViewById(R.id.layoutCuTrangChuUser);
+        layoutQua = view.findViewById(R.id.layoutQuaTrangChuUser);
+        layoutHat = view.findViewById(R.id.layoutHatTrangChuUser);
+        layoutRau = view.findViewById(R.id.layoutRauTrangChuUser);
+        tvName = view.findViewById(R.id.tvNameTrangChuUser);
         viewPager2 = view.findViewById(R.id.viewPager2TrangChuUser);
         circleIndicator3 = view.findViewById(R.id.ci3);
         recyclerView = view.findViewById(R.id.rcvTrangChuUser);
+
+        sanPhamTrangChuDAO = new SanPhamTrangChuDAO(getContext());
+
+        //Hiển thi tên tài khoản
+        String tenDangNhap = requireActivity().getIntent().getStringExtra("tenDangNhap");
+        tvName.setText("Hi, "+tenDangNhap);
+
+
 
         //Khởi tạo adapter Cho slideShow
         AdapterSliderTrangChuUser userAdapter = new AdapterSliderTrangChuUser(getData());
@@ -69,17 +93,60 @@ public class FragTrangChuUser extends Fragment {
             @Override
             public void onClick(View v) {
 
-
-
-
-
+                startActivity(new Intent(getContext(), DanhSachSanPhamUseActivity.class));
+//                getActivity().finish();
 
             }
         });
 
+        layoutCu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), DanhSachSanPhamUseActivity.class));
+//                getActivity().finish();
+
+            }
+        });
+
+        layoutRau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), DanhSachSanPhamUseActivity.class));
+//                getActivity().finish();
+
+            }
+        });
+
+        layoutHat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), DanhSachSanPhamUseActivity.class));
+//                getActivity().finish();
+
+            }
+        });
+
+        layoutQua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), DanhSachSanPhamUseActivity.class));
+//                getActivity().finish();
+
+            }
+        });
+
+
+
         //Set Data mẫu
-        adapterTrangChuUser = new AdapterTrangChuUser(getContext(),getDataSanPham());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+        list = sanPhamTrangChuDAO.getAll();
+        adapterTrangChuUser = new AdapterTrangChuUser(getContext(),list);
+        GridLayoutManager gridLayoutManager =
+                new GridLayoutManager(getContext(),2
+                        ,GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapterTrangChuUser);
 
@@ -95,24 +162,6 @@ public class FragTrangChuUser extends Fragment {
     private List<SanPhamTrangChuUserDTO> getDataSanPham() {
 
         List<SanPhamTrangChuUserDTO> list = new ArrayList<>();
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
-        list.add(new SanPhamTrangChuUserDTO(1,R.drawable.img_bong_cai_xanh,R.drawable.icon_gio_hang_trang_chu,"Bông cải xanh","17.000 VND"));
 
         return list;
 
