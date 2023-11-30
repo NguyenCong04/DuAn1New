@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import congntph34559.fpoly.duan1newapplication.ChiTietSanPhamActivity;
@@ -30,6 +31,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     List<SanPhamTrangChuUserDTO> list;
     private GioHangDAO gioHangDAO;
     private List<GioHangDTO> listGioHang;
+    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
     public AdapterTrangChuUser(Context context, List<SanPhamTrangChuUserDTO> list) {
         this.context = context;
@@ -55,7 +57,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                 getIdentifier(tenImg,"drawable",((Activity)context).getPackageName()));
         holder.ivAnhSanPham.setImageResource(resourceImg);
         holder.tvTenSanPham.setText(list.get(position).getTenSanPhamUser());
-        holder.tvGiaSanPham.setText(list.get(position).getGiaSanPhamUser()+" VND / 1kg");
+        holder.tvGiaSanPham.setText(decimalFormat.format(list.get(position).getGiaSanPhamUser())+" VND / 1kg");
 
         gioHangDAO = new GioHangDAO(context);
         listGioHang = gioHangDAO.getAll();
