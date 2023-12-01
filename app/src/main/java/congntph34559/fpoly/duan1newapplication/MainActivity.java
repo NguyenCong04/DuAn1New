@@ -1,6 +1,7 @@
 package congntph34559.fpoly.duan1newapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,7 +16,13 @@ import androidx.fragment.app.FragmentManager;
 
 import congntph34559.fpoly.duan1newapplication.Fragment.FragDonDatHomeUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragGioHangUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragTrangChuUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentCuTrangChuAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentDanhSachDonDatAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentThongKeAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentTrangChuAdmin;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragmentTrangChuAdmin;
 
 
@@ -32,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager manager;
 
     private int index = 1; //Khởi tạo biến index bằng 1 để gán cho từng icon có trong navbottom
+    //Gui thong tin ten dang nhap qua user
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         //Ánh xạ layout navbuttom admin và user
         layoutNavBottomAdmin = findViewById(R.id.layoutNavBottomAdmin);
@@ -48,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         //Phẩm quyền admin và user
         //Nhận tên đăng nhập
         String tenDangNhap = getIntent().getStringExtra("tenDangNhap");
+        String matKhau = getIntent().getStringExtra("matKhau");
+
+        //xư ly lay ten dang nhap
+        SharedPreferences sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userName", tenDangNhap);
+        editor.putString("PassOld", matKhau);
+        editor.apply();
+
+
+
 
         assert tenDangNhap != null;
         if (tenDangNhap.equals("admin")) {
@@ -223,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 4){
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanUser()).commit();
 
                     //Ẩn đi các textView của các icon không đc click
                     tvTrangChuUser.setVisibility(View.GONE);
@@ -280,6 +304,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 1) {
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentTrangChuAdmin()).commit();
+
                     tvThongKeAdmin.setVisibility(View.GONE);
                     tvDonDatAdmin.setVisibility(View.GONE);
                     tvTaiKhoanAdmin.setVisibility(View.GONE);
@@ -316,6 +342,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (index != 2) {
+
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentThongKeAdmin()).commit();
 
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvDonDatAdmin.setVisibility(View.GONE);
@@ -356,6 +384,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 3) {
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragmentDanhSachDonDatAdmin()).commit();
+
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvThongKeAdmin.setVisibility(View.GONE);
                     tvTaiKhoanAdmin.setVisibility(View.GONE);
@@ -392,6 +422,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (index != 4) {
 
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanAdmin()).commit();
+
                     tvTrangChuAdmin.setVisibility(View.GONE);
                     tvThongKeAdmin.setVisibility(View.GONE);
                     tvDonDatAdmin.setVisibility(View.GONE);
@@ -419,14 +451,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
 
 
 

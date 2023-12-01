@@ -74,8 +74,6 @@ public class AdapterDonDatUser extends RecyclerView.Adapter<AdapterDonDatUser.Vi
                 intent.putExtra("tongTien",id.getTongTien());
                 intent.putExtra("ngayDat",id.getNgayDat());
                 ((Activity)context).startActivity(intent);
-
-
             }
         });
 

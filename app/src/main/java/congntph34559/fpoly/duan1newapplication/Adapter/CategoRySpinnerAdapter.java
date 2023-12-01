@@ -17,6 +17,7 @@ import congntph34559.fpoly.duan1newapplication.R;
 
 public class CategoRySpinnerAdapter extends ArrayAdapter<Category> {
 
+
     public CategoRySpinnerAdapter(@NonNull Context context, int resource, @NonNull List<Category> objects) {
         super(context, resource, objects);
     }
