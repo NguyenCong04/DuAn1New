@@ -78,6 +78,170 @@ public class MainActivity extends AppCompatActivity {
             layoutNavBottomAdmin.setVisibility(View.VISIBLE);
             layoutNavBottomUser.setVisibility(View.GONE);
             manager.beginTransaction().replace(R.id.fragContainerView,new FragmentTrangChuAdmin()).commit();
+            layoutTrangChuAdmin = findViewById(R.id.layoutTrangChuAdmin);
+            layoutThongKeAdmin = findViewById(R.id.layouThongKeAdmin);
+            layoutDonDatAdmin = findViewById(R.id.layoutDonDatAdmin);
+            layoutTaiKhoanAdmin = findViewById(R.id.layoutTaiKhoanAdmin);
+            //textView
+            tvTrangChuAdmin = findViewById(R.id.tvTrangChuAdmin);
+            tvThongKeAdmin = findViewById(R.id.tvThongKeAdmin);
+            tvDonDatAdmin = findViewById(R.id.tvDonDatAdmin);
+            tvTaiKhoanAdmin = findViewById(R.id.tvTaiKhoanAdmin);
+
+            //set onclick cho layout navbottom của admin
+
+            //set onclick cho layout trang chủ admin
+            layoutTrangChuAdmin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (index != 1) {
+
+                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentTrangChuAdmin()).commit();
+
+                        tvThongKeAdmin.setVisibility(View.GONE);
+                        tvDonDatAdmin.setVisibility(View.GONE);
+                        tvTaiKhoanAdmin.setVisibility(View.GONE);
+
+
+                        tvTrangChuAdmin.setVisibility(View.VISIBLE);
+                        layoutTrangChuAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
+
+                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+
+                        ScaleAnimation scaleAnimation =
+                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f);
+                        scaleAnimation.setDuration(200);
+                        scaleAnimation.setFillAfter(true);
+                        layoutTrangChuAdmin.startAnimation(scaleAnimation);
+
+                        index = 1;
+
+                    }
+
+
+                }
+            });
+
+
+            //set onclick cho layout thống kê admin
+            layoutThongKeAdmin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (index != 2) {
+
+                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentThongKeAdmin()).commit();
+
+                        tvTrangChuAdmin.setVisibility(View.GONE);
+                        tvDonDatAdmin.setVisibility(View.GONE);
+                        tvTaiKhoanAdmin.setVisibility(View.GONE);
+
+
+                        tvThongKeAdmin.setVisibility(View.VISIBLE);
+                        layoutThongKeAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
+
+                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+
+                        ScaleAnimation scaleAnimation =
+                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f);
+                        scaleAnimation.setDuration(200);
+                        scaleAnimation.setFillAfter(true);
+                        layoutThongKeAdmin.startAnimation(scaleAnimation);
+
+                        index = 2;
+
+                    }
+
+
+                }
+            });
+
+
+            //set onclick cho layout đơn đặt admin
+            layoutDonDatAdmin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (index != 3) {
+
+                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentDanhSachDonDatAdmin()).commit();
+
+                        tvTrangChuAdmin.setVisibility(View.GONE);
+                        tvThongKeAdmin.setVisibility(View.GONE);
+                        tvTaiKhoanAdmin.setVisibility(View.GONE);
+
+
+                        tvDonDatAdmin.setVisibility(View.VISIBLE);
+                        layoutDonDatAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
+
+                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+
+                        ScaleAnimation scaleAnimation =
+                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f);
+                        scaleAnimation.setDuration(200);
+                        scaleAnimation.setFillAfter(true);
+                        layoutDonDatAdmin.startAnimation(scaleAnimation);
+
+                        index = 3;
+
+                    }
+
+                }
+            });
+
+
+            //set onclick cho layout tài khoản admin
+            layoutTaiKhoanAdmin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (index != 4) {
+
+                        manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanAdmin()).commit();
+
+                        tvTrangChuAdmin.setVisibility(View.GONE);
+                        tvThongKeAdmin.setVisibility(View.GONE);
+                        tvDonDatAdmin.setVisibility(View.GONE);
+
+
+                        tvTaiKhoanAdmin.setVisibility(View.VISIBLE);
+                        layoutTaiKhoanAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
+
+                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+
+                        ScaleAnimation scaleAnimation =
+                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f
+                                        , Animation.RELATIVE_TO_SELF, 0.0f);
+                        scaleAnimation.setDuration(200);
+                        scaleAnimation.setFillAfter(true);
+                        layoutTaiKhoanAdmin.startAnimation(scaleAnimation);
+
+                        index = 4;
+
+                    }
+
+                }
+            });
 
         }else {
 
@@ -275,170 +439,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Ánh xạ layout và textView navBottom của Admin
             //Layout
-            layoutTrangChuAdmin = findViewById(R.id.layoutTrangChuAdmin);
-            layoutThongKeAdmin = findViewById(R.id.layouThongKeAdmin);
-            layoutDonDatAdmin = findViewById(R.id.layoutDonDatAdmin);
-            layoutTaiKhoanAdmin = findViewById(R.id.layoutTaiKhoanAdmin);
-            //textView
-            tvTrangChuAdmin = findViewById(R.id.tvTrangChuAdmin);
-            tvThongKeAdmin = findViewById(R.id.tvThongKeAdmin);
-            tvDonDatAdmin = findViewById(R.id.tvDonDatAdmin);
-            tvTaiKhoanAdmin = findViewById(R.id.tvTaiKhoanAdmin);
 
-            //set onclick cho layout navbottom của admin
-
-            //set onclick cho layout trang chủ admin
-            layoutTrangChuAdmin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (index != 1) {
-
-                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentTrangChuAdmin()).commit();
-
-                        tvThongKeAdmin.setVisibility(View.GONE);
-                        tvDonDatAdmin.setVisibility(View.GONE);
-                        tvTaiKhoanAdmin.setVisibility(View.GONE);
-
-
-                        tvTrangChuAdmin.setVisibility(View.VISIBLE);
-                        layoutTrangChuAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
-
-                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-
-
-                        ScaleAnimation scaleAnimation =
-                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f);
-                        scaleAnimation.setDuration(200);
-                        scaleAnimation.setFillAfter(true);
-                        layoutTrangChuAdmin.startAnimation(scaleAnimation);
-
-                        index = 1;
-
-                    }
-
-
-                }
-            });
-
-
-            //set onclick cho layout thống kê admin
-            layoutThongKeAdmin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (index != 2) {
-
-                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentThongKeAdmin()).commit();
-
-                        tvTrangChuAdmin.setVisibility(View.GONE);
-                        tvDonDatAdmin.setVisibility(View.GONE);
-                        tvTaiKhoanAdmin.setVisibility(View.GONE);
-
-
-                        tvThongKeAdmin.setVisibility(View.VISIBLE);
-                        layoutThongKeAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
-
-                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-
-
-                        ScaleAnimation scaleAnimation =
-                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f);
-                        scaleAnimation.setDuration(200);
-                        scaleAnimation.setFillAfter(true);
-                        layoutThongKeAdmin.startAnimation(scaleAnimation);
-
-                        index = 2;
-
-                    }
-
-
-                }
-            });
-
-
-            //set onclick cho layout đơn đặt admin
-            layoutDonDatAdmin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (index != 3) {
-
-                        manager.beginTransaction().replace(R.id.fragContainerView, new FragmentDanhSachDonDatAdmin()).commit();
-
-                        tvTrangChuAdmin.setVisibility(View.GONE);
-                        tvThongKeAdmin.setVisibility(View.GONE);
-                        tvTaiKhoanAdmin.setVisibility(View.GONE);
-
-
-                        tvDonDatAdmin.setVisibility(View.VISIBLE);
-                        layoutDonDatAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
-
-                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutTaiKhoanAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-
-
-                        ScaleAnimation scaleAnimation =
-                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f);
-                        scaleAnimation.setDuration(200);
-                        scaleAnimation.setFillAfter(true);
-                        layoutDonDatAdmin.startAnimation(scaleAnimation);
-
-                        index = 3;
-
-                    }
-
-                }
-            });
-
-
-            //set onclick cho layout tài khoản admin
-            layoutTaiKhoanAdmin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (index != 4) {
-
-                        manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanAdmin()).commit();
-
-                        tvTrangChuAdmin.setVisibility(View.GONE);
-                        tvThongKeAdmin.setVisibility(View.GONE);
-                        tvDonDatAdmin.setVisibility(View.GONE);
-
-
-                        tvTaiKhoanAdmin.setVisibility(View.VISIBLE);
-                        layoutTaiKhoanAdmin.setBackgroundResource(R.drawable.custom_seclected_nav_bottom);
-
-                        layoutTrangChuAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutThongKeAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                        layoutDonDatAdmin.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-
-
-                        ScaleAnimation scaleAnimation =
-                                new ScaleAnimation(0.8f, 1.0f, 1f, 1f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f
-                                        , Animation.RELATIVE_TO_SELF, 0.0f);
-                        scaleAnimation.setDuration(200);
-                        scaleAnimation.setFillAfter(true);
-                        layoutTaiKhoanAdmin.startAnimation(scaleAnimation);
-
-                        index = 4;
-
-                    }
-
-                }
-            });
 
         }
 
