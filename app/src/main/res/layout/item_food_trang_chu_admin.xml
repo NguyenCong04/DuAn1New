@@ -14,7 +14,7 @@
         android:background="#DFF8EF">
         <ImageView
             android:id="@+id/img_food_admin"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:src="@drawable/img_bap_cai_trang_chu"/>
 

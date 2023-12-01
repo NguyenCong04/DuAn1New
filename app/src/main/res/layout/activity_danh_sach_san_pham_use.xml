@@ -32,22 +32,20 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-
-
     <EditText
         android:id="@+id/edt_search"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/search_background"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/search_background"
         android:drawableStart="@drawable/img"
-        android:padding="8dp"
-        android:inputType="text"
-        android:hint="Tìm kiếm thực phẩm"
         android:drawablePadding="8dp"
-        android:fontFamily="serif"/>
+        android:fontFamily="serif"
+        android:hint="Tìm kiếm thực phẩm"
+        android:inputType="text"
+        android:padding="8dp" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

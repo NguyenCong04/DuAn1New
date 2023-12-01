@@ -43,8 +43,7 @@
                 android:textSize="18dp"
                 android:fontFamily="serif"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="15dp"
-                />
+                android:layout_marginBottom="15dp"/>
 
 
             <LinearLayout
@@ -62,7 +61,8 @@
                     android:padding="15dp"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:hint="Nhập tên sản phẩm"/>
                 <EditText
                     android:id="@+id/edtSuaGiaSp"
                     android:layout_width="match_parent"
@@ -71,27 +71,21 @@
                     android:padding="15dp"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
-                    android:layout_marginTop="10dp"/>
-                <EditText
-                    android:id="@+id/edtSuaSoLuongSp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_editttext_themsp"
-                    android:padding="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="serif"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:hint="Nhập giá sản phẩm"
+                    android:inputType="number"/>
+
             </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mô tả sản phẩm"
+                android:text="Thông tin sản phẩm"
                 android:textSize="18dp"
                 android:fontFamily="serif"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
                 />
 
             <LinearLayout
@@ -99,66 +93,57 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/custom_bg_themsp"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:layout_marginTop="10dp">
+
 
                 <EditText
-                    android:id="@+id/edtSuaTenNcc"
+                    android:id="@+id/edtSuaNhaCungCap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_editttext_themsp"
                     android:padding="15dp"
+                    android:hint="Nhà cung cấp"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
+
                 <Spinner
                     android:id="@+id/spnCategorySuaSp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@android:color/transparent"/>
+
+
                 <EditText
-                    android:id="@+id/edtSuaMoTaSp"
+                    android:id="@+id/edtSuaMoTa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_editttext_themsp"
                     android:padding="15dp"
-                    android:layout_marginBottom="10dp"
+                    android:hint="Nhập mô tả sản phẩm"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
 
-                <ImageView
-                    android:id="@+id/imgSuaSp"
-                    android:layout_width="120dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/custom_img_admin"
+                <Button
+                    android:id="@+id/btnSuaSp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="20dp"
-                    android:src="@drawable/img_camera_admin"/>
-                
-                <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/custom_bg_sua_img"
-                    android:src="@drawable/img_bap_cai_trang_chu"/>
+                    android:backgroundTint="#00EEEE"
+                    android:fontFamily="serif"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Hoàn thành"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSuaSp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cusstom_btn"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="20dp"
-                android:text="Hoàn thành"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:fontFamily="serif"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"/>
+
+
 
         </LinearLayout>
     </LinearLayout>
