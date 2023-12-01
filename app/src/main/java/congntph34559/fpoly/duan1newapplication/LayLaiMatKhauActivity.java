@@ -39,27 +39,16 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
 
                 if (kiemTra()) {
 
-                    TaiKhoanDTO idTaiKhoan = new TaiKhoanDTO();
-                    for (int i = 0; i < list.size(); i++) {
-
-                        idTaiKhoan = list.get(i);
-
-
-                    }
-
-
+                    String tenDangNhap = getIntent().getStringExtra("tenDangNhap");
                     String matKhauMoi = edMatKhauMoi.getText().toString();
 
-                    idTaiKhoan.setMatKhau(matKhauMoi);
 
-                    int kq = taiKhoanDAO.updateRow(idTaiKhoan);
+                    int kq = taiKhoanDAO.updateMatKhau(tenDangNhap,matKhauMoi);
 
                     if (kq > 0) {
 
                         Toast.makeText(LayLaiMatKhauActivity.this, "Đổi mât khẩu thành công"
                                 , Toast.LENGTH_SHORT).show();
-                        list.clear();
-                        list.addAll(taiKhoanDAO.getAll());
                         startActivity(new Intent(LayLaiMatKhauActivity.this, LoginSigUpActivity.class));
                         finish();
 

@@ -51,8 +51,9 @@ public class XacNhanTaiKhoanActivity extends AppCompatActivity {
 
                     if (kq) {
 
-                        startActivity(new Intent(XacNhanTaiKhoanActivity.this
-                                ,LayLaiMatKhauActivity.class));
+                        Intent intent = new Intent(XacNhanTaiKhoanActivity.this,LayLaiMatKhauActivity.class);
+                        intent.putExtra("tenDangNhap",tenDangNhap);
+                        startActivity(intent);
                         finish();
 
                     }else {

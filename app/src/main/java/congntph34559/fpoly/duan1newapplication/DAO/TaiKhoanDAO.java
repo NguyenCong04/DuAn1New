@@ -45,6 +45,14 @@ public class TaiKhoanDAO {
 
 
     }
+    public int updateMatKhau(String tenDangNhap,String matKhau){
+
+        ContentValues values = new ContentValues();
+        values.put("mat_khau",matKhau);
+
+        return db.update("tb_tai_khoan",values,"ten_dang_nhap=?",new String[]{tenDangNhap});
+
+    }
 
 
 

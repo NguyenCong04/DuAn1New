@@ -18,9 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@drawable/custom_item"
+            android:background="@drawable/custom_tieu_de_frag"
             android:gravity="center_vertical"
-            android:padding="15dp">
+            android:padding="15dp"
+            android:elevation="3dp">
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
