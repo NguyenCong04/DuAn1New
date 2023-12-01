@@ -1,19 +1,32 @@
 package congntph34559.fpoly.duan1newapplication;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+
+import congntph34559.fpoly.duan1newapplication.Adapter.AdapterDanhSachSanPham;
 import congntph34559.fpoly.duan1newapplication.Adapter.MyViewPagerAdapter;
+import congntph34559.fpoly.duan1newapplication.DAO.DanhSachSanPhamDAO;
+import congntph34559.fpoly.duan1newapplication.DTO.DanhSachSanPhamDTO;
 
 public class DanhSachSanPhamUseActivity extends AppCompatActivity {
 
     TabLayout mTabLayout;
     ViewPager2 viewPager2;
     MyViewPagerAdapter myViewPagerAdapter;
+    EditText edtSearch;
+    AdapterDanhSachSanPham danhSachSanPham;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +35,14 @@ public class DanhSachSanPhamUseActivity extends AppCompatActivity {
 
         mTabLayout = findViewById(R.id.tab_layout);
         viewPager2 = findViewById(R.id.view_paper);
+        edtSearch = findViewById(R.id.edt_search);
         myViewPagerAdapter = new MyViewPagerAdapter(this);
         viewPager2.setAdapter(myViewPagerAdapter);
+        DanhSachSanPhamDAO danhSachSanPhamDAO = new DanhSachSanPhamDAO(this);
+        ArrayList<DanhSachSanPhamDTO> list = danhSachSanPhamDAO.getDSSanPham();
+
+        danhSachSanPham = new AdapterDanhSachSanPham(list,this);
+
 
 
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

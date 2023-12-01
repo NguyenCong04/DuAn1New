@@ -1,5 +1,6 @@
 package congntph34559.fpoly.duan1newapplication.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,37 +18,67 @@ import java.util.ArrayList;
 import java.util.List;
 
 import congntph34559.fpoly.duan1newapplication.Adapter.AdapterFoodAdmin;
+import congntph34559.fpoly.duan1newapplication.Adapter.AdapterSanPhamCuAdmin;
+import congntph34559.fpoly.duan1newapplication.Adapter.AdapterSanPhamRauAdmin;
+import congntph34559.fpoly.duan1newapplication.DAO.TrangChuAdminDAO;
 import congntph34559.fpoly.duan1newapplication.DTO.FoodTrangChuAdmin;
+import congntph34559.fpoly.duan1newapplication.DTO.SanPhamRauAdminDTO;
 import congntph34559.fpoly.duan1newapplication.R;
+import congntph34559.fpoly.duan1newapplication.SuaSanPhamAdmin;
+import congntph34559.fpoly.duan1newapplication.ThemSanPhamAdmin;
 
-public class FragmentCuTrangChuAdmin extends Fragment {
+public class FragmentCuTrangChuAdmin extends Fragment implements AdapterSanPhamCuAdmin.SanPhamAdminInterface, AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
     private RecyclerView recyclerViewCuAdmin;
     private FloatingActionButton fltAddCuAdmin;
+    private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frg_cu_trang_chu_admin, container, false);
-        recyclerViewCuAdmin = view.findViewById(R.id.recyclerCuAdmin);
-        fltAddCuAdmin = view.findViewById(R.id.fltAddCuAdmin);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        recyclerViewCuAdmin.setLayoutManager(gridLayoutManager);
-
-        AdapterFoodAdmin adapterFoodAdmin = new AdapterFoodAdmin(getCuAdmin());
-        recyclerViewCuAdmin.setAdapter(adapterFoodAdmin);
         return view;
     }
 
-    private List<FoodTrangChuAdmin> getCuAdmin() {
-        List<FoodTrangChuAdmin> foodTrangChuAdminList = new ArrayList<>();
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_cai_thao_trang_chu, "Cải thảo", "18.000 VND"));
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_bong_cai_trang_trang_chu, "Bông cải trắng", "19.000 VND"));
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_rau_muong_trang_chu, "Rau muống", "17.000 VND"));
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_cai_chip_trang_chu, "Cải chíp", "18.000 VND"));
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_cai_thao_trang_chu, "Cải thảo", "18.000 VND"));
-        foodTrangChuAdminList.add(new FoodTrangChuAdmin(R.drawable.img_cai_thao_trang_chu, "Cải thảo", "18.000 VND"));
-        return foodTrangChuAdminList;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        listener = this;
+        recyclerViewCuAdmin = view.findViewById(R.id.recyclerCuAdmin);
+        fltAddCuAdmin = view.findViewById(R.id.fltAddCuAdmin);
+        intiData();
+        fltAddCuAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ThemSanPhamAdmin.class));
+            }
+        });
+
+
+    }
+
+    private void intiData(){
+        TrangChuAdminDAO trangChuAdminDAO = new TrangChuAdminDAO(getContext());
+        ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamCuAdmin();
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL,false);
+        recyclerViewCuAdmin.setLayoutManager(gridLayoutManager);
+        AdapterSanPhamCuAdmin adapterSanPhamCuAdmin = new AdapterSanPhamCuAdmin(list,getContext(),listener);
+        recyclerViewCuAdmin.setAdapter(adapterSanPhamCuAdmin);
+        adapterSanPhamCuAdmin.notifyDataSetChanged();
+//        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
+    }
+
+    public void onResume(){
+        super.onResume();
+        intiData();
+    }
+
+    @Override
+    public void updateSanPham(SanPhamRauAdminDTO dto) {
+        Intent intent = new Intent(requireActivity(), SuaSanPhamAdmin.class);
+        intent.putExtra("dto", dto);
+        requireActivity().startActivity(intent);
     }
 }

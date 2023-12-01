@@ -13,6 +13,21 @@
         android:theme="@style/Theme.DuAn1NewApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ViCuaToiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongTinCaNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LienHeGopYActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoiMatKhauUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CapNhatDonDatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChiTietSanPhamActivity"
             android:exported="false" />
         <activity
@@ -25,7 +40,7 @@
             android:name=".LoginSigUpActivity"
             android:exported="false" />
         <activity
-            android:name=".DanhSachSanPhamUseActivity"
+            android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".DiaChiActivity"
@@ -43,7 +58,7 @@
             android:name=".ThemSanPhamAdmin"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".DanhSachSanPhamUseActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThemSanPhamAdmin"
-    >
+    tools:context=".ThemSanPhamAdmin">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,27 +74,19 @@
                     android:textColor="@color/black"
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
-                <EditText
-                    android:id="@+id/edtThemSoLuongSp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_editttext_themsp"
-                    android:padding="15dp"
-                    android:hint="Nhập số lượng"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="serif"
-                    android:layout_marginTop="10dp"/>
+
+
             </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mô tả sản phẩm"
+                android:text="Thông tin sản phẩm"
                 android:textSize="18dp"
                 android:fontFamily="serif"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
                 />
 
             <LinearLayout
@@ -103,60 +94,72 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/custom_bg_themsp"
-                android:padding="10dp">
+                android:padding="10dp"
+                android:layout_marginTop="10dp">
+
 
                 <EditText
-                    android:id="@+id/edtThemTenNcc"
+                    android:id="@+id/edtNhaCungCap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_editttext_themsp"
                     android:padding="15dp"
-                    android:hint="Nhập tên nhà cung cấp"
+                    android:hint="Nhà cung cấp"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
+
                 <Spinner
-                    android:id="@+id/spnCategoryAddSp"
+                    android:id="@+id/spnCategoryThemSp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@android:color/transparent"/>
+                    android:background="@drawable/custom_editttext_themsp" />
+
+
                 <EditText
-                    android:id="@+id/edtThemMoTaSp"
+                    android:id="@+id/edtMoTa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_editttext_themsp"
                     android:padding="15dp"
                     android:hint="Nhập mô tả sản phẩm"
-                    android:layout_marginBottom="10dp"
                     android:textColor="@color/black"
                     android:fontFamily="serif"
-                    android:layout_marginTop="10dp"/>
-                
-                <ImageView
+                    android:layout_marginTop="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/btnThemSp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="#00EEEE"
+                    android:fontFamily="serif"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Hoàn thành"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+            </LinearLayout>
+
+            <ImageView
                     android:id="@+id/imgThemSp"
                     android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/custom_img_admin"
                     android:layout_marginTop="25dp"
-                    android:layout_marginBottom="20dp"
                     android:src="@drawable/img_camera_admin"/>
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/captireTXT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="capture_imge_here_of_browse"
+                    android:fontFamily="serif"
+                    android:layout_gravity="center"/>
 
-            <Button
-                android:id="@+id/btnThemSp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00EEEE"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="20dp"
-                android:text="Hoàn thành"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:fontFamily="serif"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"/>
 
         </LinearLayout>
     </LinearLayout>

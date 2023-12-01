@@ -35,11 +35,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "    id_loai_san_pham INTEGER REFERENCES tb_loai_san_pham (id_san_pham),\n" +
                 "    ten_san_pham     TEXT    NOT NULL,\n" +
                 "    don_gia          INTEGER NOT NULL,\n" +
-                "    img_url          INTEGER NOT NULL,\n" +
+                "    img_url          TEXT NOT NULL,\n" +
                 "    mo_ta            TEXT    NOT NULL,\n" +
-                "    so_luong         INTEGER NOT NULL\n" +
+                "    so_luong         INTEGER ,\n" +
+                "    nhacungcap         TEXT NOT NULL,\n" +
+                "    loai         TEXT \n" +
                 ");\n";
         db.execSQL(sqlSanPham);
+        db.execSQL("INSERT INTO tb_san_pham VALUES (1,1,'Rau bắp cải',17000,'img_21','1234',1,'Toan','Rau')");
+        db.execSQL("INSERT INTO tb_san_pham VALUES (2,2,'Củ cải',24000,'img_22','1546',2,'Cong','Củ')");
+        db.execSQL("INSERT INTO tb_san_pham VALUES (3,3,'Quả nho',10000,'img_qua_nho','1234',3,'Duy','Quả')");
 
         String sqlThongTinKhachHang = "CREATE TABLE tb_thong_tin_khach_hang (\n" +
                 "    id_khach_hang  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +

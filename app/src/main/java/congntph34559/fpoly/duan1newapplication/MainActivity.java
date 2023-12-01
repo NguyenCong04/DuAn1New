@@ -13,7 +13,10 @@ import androidx.fragment.app.FragmentManager;
 
 import congntph34559.fpoly.duan1newapplication.Fragment.FragDonDatHomeUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragGioHangUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanUser;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragTrangChuUser;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentThongKeAdmin;
+import congntph34559.fpoly.duan1newapplication.Fragment.FragmentTrangChuAdmin;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         manager = getSupportFragmentManager();
 
         //Gán fragment mặc định khi vào ứng dụng là màn trang chủ
-        manager.beginTransaction().replace(R.id.fragContainerView,new FragTrangChuUser()).commit();
+        manager.beginTransaction().replace(R.id.fragContainerView,new FragmentTrangChuAdmin()).commit();
 
 
         //Ánh xạ layout và textview cho navbottom của user
@@ -201,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (index != 4){
+                    manager.beginTransaction().replace(R.id.fragContainerView, new FragTaiKhoanUser()).commit();
 
 
                     //Ẩn đi các textView của các icon không đc click
