@@ -2,69 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:text="Danh sách đơn đặt"
+        android:background="@drawable/custom_tieu_de_frag"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textSize="23dp"
+        android:elevation="5dp"
+
+        />
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#C0F3ED">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Danh sách đơn đặt"
-            android:textSize="23dp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:layout_gravity="center_horizontal"/>
-    </androidx.appcompat.widget.Toolbar>
+        android:id="@+id/tabLayoutDonDatAdmin"
 
-    <LinearLayout
+        app:tabTextColor="#A39E9E"
+        app:tabSelectedTextColor="@color/black"
+        android:background="@color/white"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorColor="@color/black"
+        app:tabBackground="@color/white"
+        app:tabIndicatorHeight="2dp"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2DonDatAdmin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/custom_bg_themsp"
-        android:layout_margin="15dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerDanhSachHoaDonAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D7D4D4"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tổng tiền thanh toán: 17.000 VND"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:gravity="end"
-            android:layout_margin="10dp"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:background="#D7D4D4"
-            android:layout_height="1dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnDanhSahDonAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:background="@drawable/cusstom_btn"
-            android:text="Xác nhận đơn đặt"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/black"
-            android:fontFamily="serif"
-            android:textStyle="bold"
-            />
-
-    </LinearLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

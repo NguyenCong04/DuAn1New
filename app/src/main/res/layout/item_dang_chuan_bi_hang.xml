@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
-    android:layout_margin="10dp"
-    android:layout_height="wrap_content">
-
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,16 +14,16 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         >
+
+
         <TextView
+            android:id="@+id/txtTrangThaiDonDatAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đã đặt"
             android:layout_alignParentEnd="true"
-            android:gravity="end"
             android:fontFamily="serif"
-            android:id="@+id/tvTrangThaiDonDat"
-            />
-
+            android:gravity="end"
+            android:text="Đã đặt" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +31,7 @@
             android:text="Tên khách hàng: "
             android:fontFamily="serif"
             android:textStyle="bold"
-            android:id="@+id/tvTenKhach"
+            android:id="@+id/txtTenKhachHangDonDatAdmin"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +49,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginStart="5dp"
             android:textSize="13sp"
-            android:id="@+id/tvDanhSachSanPham"
+            android:id="@+id/txtDanhSachSanPhamAdmin"
             />
 
         <TextView
@@ -59,7 +58,7 @@
             android:text="Thời gian: "
             android:fontFamily="serif"
             android:textStyle="bold"
-            android:id="@+id/tvThoiGianItemDonDatUser"
+            android:id="@+id/txtThoiGianItemDonDatAdmin"
             />
 
 
@@ -76,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tổng tiền thanh toán: 0.000 VND"
-            android:id="@+id/tvTongTienItemDonDatUser"
+            android:id="@+id/txtTongTienItemDonDatAdmin"
             android:fontFamily="serif"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -84,8 +83,25 @@
 
             />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D7D4D4"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnXacNhanDonAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cusstom_btn"
+            android:text="Xác nhận đơn đặt"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="13dp"/>
+
+
     </LinearLayout>
-
-
-
 </androidx.cardview.widget.CardView>

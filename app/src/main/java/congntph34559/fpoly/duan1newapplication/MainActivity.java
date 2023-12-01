@@ -1,6 +1,7 @@
 package congntph34559.fpoly.duan1newapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -38,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager manager;
 
     private int index = 1; //Khởi tạo biến index bằng 1 để gán cho từng icon có trong navbottom
+    //Gui thong tin ten dang nhap qua user
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         //Ánh xạ layout navbuttom admin và user
         layoutNavBottomAdmin = findViewById(R.id.layoutNavBottomAdmin);
@@ -54,6 +60,17 @@ public class MainActivity extends AppCompatActivity {
         //Phẩm quyền admin và user
         //Nhận tên đăng nhập
         String tenDangNhap = getIntent().getStringExtra("tenDangNhap");
+        String matKhau = getIntent().getStringExtra("matKhau");
+
+        //xư ly lay ten dang nhap
+        SharedPreferences sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userName", tenDangNhap);
+        editor.putString("PassOld", matKhau);
+        editor.apply();
+
+
+
 
         assert tenDangNhap != null;
         if (tenDangNhap.equals("admin")) {
@@ -434,14 +451,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
 
 
 

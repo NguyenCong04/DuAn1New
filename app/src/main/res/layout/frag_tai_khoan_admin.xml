@@ -29,23 +29,17 @@
         android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/txtTenTaiKhoanAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nguyễn Văn Toàn"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:fontFamily="serif"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="toan11"
-        android:layout_gravity="center"
-        android:layout_marginTop="3dp"
-        android:fontFamily="serif"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnThongTinAdmin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -64,6 +58,7 @@
         android:paddingEnd="10dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoiMatKhauAdmin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -83,6 +78,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDangXuatAdmin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"

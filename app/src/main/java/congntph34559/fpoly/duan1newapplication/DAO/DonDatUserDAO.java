@@ -48,6 +48,8 @@ public class DonDatUserDAO {
 
     }
 
+
+
     public List<DonDatUserDTO> getAll(){
 
         List<DonDatUserDTO> list = new ArrayList<>();
@@ -190,6 +192,88 @@ public class DonDatUserDAO {
         return list;
 
 
+    }
+
+    public List<DonDatUserDTO> selectDangGiaoHang() {
+        List<DonDatUserDTO> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * from tb_hoa_don where trang_thai like '%Đang giao hàng%'", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+
+                int id = cursor.getInt(0);
+                int idSp = cursor.getInt(1);
+                String tenKhach = cursor.getString(2);
+                String dsSanPham = cursor.getString(3);
+                String soDienThoai = cursor.getString(4);
+                String diaChi = cursor.getString(5);
+                String ngayDat = cursor.getString(6);
+                String trangThai = cursor.getString(7);
+                int tongTien = cursor.getInt(8);
+
+                DonDatUserDTO objDonDat = new DonDatUserDTO();
+                objDonDat.setId(id);
+                objDonDat.setIdSanPham(idSp);
+                objDonDat.setTenKhachHang(tenKhach);
+                objDonDat.setTenSanPham(dsSanPham);
+                objDonDat.setSoDienThoai(soDienThoai);
+                objDonDat.setDiaChi(diaChi);
+                objDonDat.setNgayDat(ngayDat);
+                objDonDat.setTrangThai(trangThai);
+                objDonDat.setTongTien(tongTien);
+
+
+                list.add(objDonDat);
+
+
+                cursor.moveToNext();
+
+            }
+
+
+        }
+        return list;
+    }
+
+    public List<DonDatUserDTO> selectHoanThanhGiaoHang() {
+        List<DonDatUserDTO> list = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * from tb_hoa_don where trang_thai like '%Đã thanh toán%'", null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+
+                int id = cursor.getInt(0);
+                int idSp = cursor.getInt(1);
+                String tenKhach = cursor.getString(2);
+                String dsSanPham = cursor.getString(3);
+                String soDienThoai = cursor.getString(4);
+                String diaChi = cursor.getString(5);
+                String ngayDat = cursor.getString(6);
+                String trangThai = cursor.getString(7);
+                int tongTien = cursor.getInt(8);
+
+                DonDatUserDTO objDonDat = new DonDatUserDTO();
+                objDonDat.setId(id);
+                objDonDat.setIdSanPham(idSp);
+                objDonDat.setTenKhachHang(tenKhach);
+                objDonDat.setTenSanPham(dsSanPham);
+                objDonDat.setSoDienThoai(soDienThoai);
+                objDonDat.setDiaChi(diaChi);
+                objDonDat.setNgayDat(ngayDat);
+                objDonDat.setTrangThai(trangThai);
+                objDonDat.setTongTien(tongTien);
+
+
+                list.add(objDonDat);
+
+
+                cursor.moveToNext();
+
+            }
+
+
+        }
+        return list;
     }
 
 

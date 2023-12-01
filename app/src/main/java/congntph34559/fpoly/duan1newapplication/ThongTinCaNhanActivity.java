@@ -1,7 +1,9 @@
 package congntph34559.fpoly.duan1newapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,18 +19,22 @@ import androidx.appcompat.widget.AppCompatButton;
 import java.util.ArrayList;
 import java.util.List;
 
+import congntph34559.fpoly.duan1newapplication.DAO.TaiKhoanDAO;
 import congntph34559.fpoly.duan1newapplication.DAO.ThongTinKhachHangDAO;
 import congntph34559.fpoly.duan1newapplication.DBHelper.MyDBHelper;
+import congntph34559.fpoly.duan1newapplication.DTO.TaiKhoanDTO;
 import congntph34559.fpoly.duan1newapplication.DTO.ThongTinKhachHangDTO;
 import congntph34559.fpoly.duan1newapplication.Fragment.FragTaiKhoanUser;
 
 public class ThongTinCaNhanActivity extends AppCompatActivity {
 
     private ImageView imgBackThongTinCaNhan;
-    private EditText edtTenKhachHang, edtEmail, edtSoDienThoai, edtGioiTinh, edtNgaySinh;
+    private EditText edtTenKhachHang, edtEmail, edtSoDienThoai, edtGioiTinh, edtNgaySinh, edtTenDangNhapUser;
     private AppCompatButton btnLuThongTin;
 
     private ThongTinKhachHangDAO thongTinKhachHangDAO;
+    private TaiKhoanDAO taiKhoanDAO;
+    private List<TaiKhoanDTO> listTk;
 
 
 
@@ -47,6 +53,11 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
                 finish();
             }
         });
+// hien thi thong tin ten dăng nhập lên EditText
+        edtTenDangNhapUser = findViewById(R.id.edtTenDangNhapUser);
+        SharedPreferences sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        String loggEdtTenDangNhap = sharedPreferences.getString("userName", "Default Name");
+        edtTenDangNhapUser.setText(loggEdtTenDangNhap);
 
         edtTenKhachHang = findViewById(R.id.edt_ho_ten);
         edtEmail = findViewById(R.id.edt_email);
@@ -55,42 +66,73 @@ public class ThongTinCaNhanActivity extends AppCompatActivity {
         edtNgaySinh = findViewById(R.id.edt_ngay_sinh);
         btnLuThongTin = findViewById(R.id.btn_doi_pass);
 
-        thongTinKhachHangDAO = new ThongTinKhachHangDAO(this);
 
-        ArrayList<ThongTinKhachHangDTO> list = thongTinKhachHangDAO.getAll();
-        if (!list.isEmpty()) {
-            ThongTinKhachHangDTO khachHangDTO = list.get(0);
+        taiKhoanDAO = new TaiKhoanDAO(this);
+        listTk = taiKhoanDAO.getAllThongTin();
 
-            edtTenKhachHang.setText(khachHangDTO.getTenKhachHang());
-            edtEmail.setText(khachHangDTO.getEmail());
-            edtSoDienThoai.setText(khachHangDTO.getSoDienThoai());
-            edtGioiTinh.setText(khachHangDTO.getGioiTinh());
-            edtNgaySinh.setText(khachHangDTO.getNgaySinh());
+        //Lấy thông tin hiển thị lên Edittext
+        TaiKhoanDTO taiKhoanDTO = taiKhoanDAO.getThongTinTheoTenDangNhap(loggEdtTenDangNhap);
+        if (taiKhoanDTO != null){
+            edtTenKhachHang.setText(taiKhoanDTO.getTenUser());
+            edtEmail.setText(taiKhoanDTO.getEmail());
+            edtSoDienThoai.setText(taiKhoanDTO.getSoDienThoai());
+            edtGioiTinh.setText(taiKhoanDTO.getGioiTinh());
+            edtNgaySinh.setText(taiKhoanDTO.getNgaySinh());
         }
+
+        //lưu thông tin khách hàng vuwaf nhập
 
         btnLuThongTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    String tenKhachHang = edtTenKhachHang.getText().toString();
+
+                if (kiemTra()){
+
+                    TaiKhoanDTO idTaikhoan = new TaiKhoanDTO();
+                    for (int i = 0; i < listTk.size(); i++) {
+                        idTaikhoan = listTk.get(i);
+                    }
+
+                    String tenUser = edtTenKhachHang.getText().toString();
                     String email = edtEmail.getText().toString();
                     String soDienThoai = edtSoDienThoai.getText().toString();
                     String gioiTinh = edtGioiTinh.getText().toString();
                     String ngaySinh = edtNgaySinh.getText().toString();
 
-                    ThongTinKhachHangDTO thongTinKhachHangDTO = new ThongTinKhachHangDTO();
-                    int thongTinKhachHangUpdate = thongTinKhachHangDAO.updateRow(thongTinKhachHangDTO);
-                    if (thongTinKhachHangUpdate > 0) {
-                        Toast.makeText(ThongTinCaNhanActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
+                    idTaikhoan.setTenUser(tenUser);
+                    idTaikhoan.setEmail(email);
+                    idTaikhoan.setSoDienThoai(soDienThoai);
+                    idTaikhoan.setGioiTinh(gioiTinh);
+                    idTaikhoan.setNgaySinh(ngaySinh);
+
+                    int kq = taiKhoanDAO.updateThongTin(idTaikhoan);
+                    if (kq > 0) {
+                        Toast.makeText(ThongTinCaNhanActivity.this, "Lưu thông tin thành công", Toast.LENGTH_SHORT).show();
+                        listTk.clear();
+                        listTk.addAll(taiKhoanDAO.getAllThongTin());
+                        finish();
                     }else {
-                        Toast.makeText(ThongTinCaNhanActivity.this, "Lưu thất bại", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThongTinCaNhanActivity.this, "Lưu thông tin thất bại", Toast.LENGTH_SHORT).show();
                     }
-                }catch (Exception e){
-                    e.printStackTrace();
+
                 }
             }
         });
 
+
+
+    }
+
+
+
+    private boolean kiemTra(){
+        if (edtTenKhachHang.getText().toString().equals("") || edtEmail.getText().toString().equals("")
+        || edtSoDienThoai.getText().toString().equals("") || edtGioiTinh.getText().toString().equals("")
+        || edtNgaySinh.getText().toString().equals("")){
+            Toast.makeText(this, "Mời nhập thông tin", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
 

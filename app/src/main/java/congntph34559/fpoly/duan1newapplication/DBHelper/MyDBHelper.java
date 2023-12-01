@@ -101,7 +101,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 ");\n";
         db.execSQL(sqlThongTinKhachHang);
 
-        db.execSQL("INSERT INTO tb_thong_tin_khach_hang VALUES(1, 'Nguyễn Tất Công', '0234561123', 'Nam', '22/8/2004', 'congnt04@gmail.com', 'Hà nội')");
+//        db.execSQL("INSERT INTO tb_thong_tin_khach_hang VALUES(1, 'Nguyễn Tất Công', '0234561123', 'Nam', '22/8/2004', 'congnt04@gmail.com', 'Hà nội')");
 
         String sqlHoaDon = "CREATE TABLE tb_hoa_don (\n" +
                 "    id_hoa_don    INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -120,9 +120,18 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "    id_tai_khoan  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "    id_khach_hang INTEGER REFERENCES tb_khach_hang (id_khach_hang),\n" +
                 "    ten_dang_nhap TEXT    NOT NULL,\n" +
-                "    mat_khau      TEXT    NOT NULL\n" +
+                "    mat_khau      TEXT    NOT NULL ," +
+                "tenUser TEXT, " +
+                "email TEXT, " +
+                "soDienThoai TEXT, " +
+                "gioiTinh TEXT," +
+                " ngaySinh TEXT\n" +
                 ");\n";
         db.execSQL(sqlTaiKhoan);
+
+        db.execSQL("INSERT INTO tb_tai_khoan VALUES(1, 1, 'admin', '12345', 'Nguyễn Tất Công', 'cong04@gmail.com', '0253536354', 'Nam', '01/04/2004')");
+
+
 
         String sqlChiTietHoaDon = "CREATE TABLE tb_chi_tiet_hoa_don (\n" +
                 "    id_chi_tiet_hoa_don INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
