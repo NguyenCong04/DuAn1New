@@ -20,8 +20,8 @@ import congntph34559.fpoly.duan1newapplication.DAO.DonDatUserDAO;
 import congntph34559.fpoly.duan1newapplication.DTO.DonDatUserDTO;
 import congntph34559.fpoly.duan1newapplication.R;
 
-public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapter.DangChuanBiHangViewHolder>{
-     List<DonDatUserDTO> list;
+public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapter.DangChuanBiHangViewHolder> {
+    List<DonDatUserDTO> list;
     Context context;
     DonDatUserDAO donDatUserDAO;
 
@@ -32,7 +32,7 @@ public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapte
         this.donDatUserDAO = new DonDatUserDAO(context);
     }
 
-    public void setData(List<DonDatUserDTO> list){
+    public void setData(List<DonDatUserDTO> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -51,23 +51,24 @@ public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapte
 
         DonDatUserDTO id = list.get(position);
 
-        holder.txtTongTienAdmin.setText("Tổng tiền: "+decimalFormat.format(list.get(position).getTongTien())+" VND");
-        holder.txtThoiGianAdmin.setText("Thời gian: "+list.get(position).getNgayDat());
-        holder.txtDanhSachSanPhamAdmin.setText(""+list.get(position).getTenSanPham());
-        holder.txtTenKhachHangAdmin.setText("Tên khách hàng: "+list.get(position).getTenKhachHang());
+        holder.txtTongTienAdmin.setText("Tổng tiền: " + decimalFormat.format(list.get(position).getTongTien()) + " VND");
+        holder.txtThoiGianAdmin.setText("Thời gian: " + list.get(position).getNgayDat());
+        holder.txtDanhSachSanPhamAdmin.setText("" + list.get(position).getTenSanPham());
+        holder.txtTenKhachHangAdmin.setText("Tên khách hàng: " + list.get(position).getTenKhachHang());
         holder.txtTrangThaiAdmin.setText(list.get(position).getTrangThai());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChiTietDonDatAdminActivity.class);
-                intent.putExtra("idHoaDon",id.getId());
-                intent.putExtra("tenKhach",id.getTenKhachHang());
-                intent.putExtra("soDienThoai",id.getSoDienThoai());
-                intent.putExtra("diaChi",id.getDiaChi());
-                intent.putExtra("tenSanPham",id.getTenSanPham());
-                intent.putExtra("tongTien",id.getTongTien());
-                intent.putExtra("ngayDat",id.getNgayDat());
+                intent.putExtra("idHoaDon", id.getId());
+                intent.putExtra("tenKhach", id.getTenKhachHang());
+                intent.putExtra("soDienThoai", id.getSoDienThoai());
+                intent.putExtra("diaChi", id.getDiaChi());
+                intent.putExtra("tenSanPham", id.getTenSanPham());
+                intent.putExtra("tongTien", id.getTongTien());
+                intent.putExtra("ngayDat", id.getNgayDat());
+                intent.putExtra("trangThai", id.getTrangThai());
                 context.startActivity(intent);
             }
         });
@@ -82,9 +83,9 @@ public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapte
                 list = donDatUserDAO.selectDangGiaoHang();
                 setData(list);
 
-                if (kq > 0){
+                if (kq > 0) {
                     Toast.makeText(context, "Đã thanh toán", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(context, "Thât bại", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -100,6 +101,7 @@ public class DangGiaoHangAdapter extends RecyclerView.Adapter<DangGiaoHangAdapte
 
         TextView txtTrangThaiAdmin, txtTenKhachHangAdmin, txtDanhSachSanPhamAdmin, txtThoiGianAdmin, txtTongTienAdmin;
         Button btnXacNhan;
+
         public DangChuanBiHangViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTrangThaiAdmin = itemView.findViewById(R.id.txtTrangThaiDonDatAdmin);

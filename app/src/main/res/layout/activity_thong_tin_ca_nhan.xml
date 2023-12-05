@@ -25,9 +25,10 @@
 
         <ImageView
             android:id="@+id/imgBackThongTinCaNhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_10"/>
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/img_10"
+            android:adjustViewBounds="true"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -35,76 +36,87 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:background="@drawable/background_lien_he">
 
 
         <EditText
             android:id="@+id/edtTenDangNhapUser"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
             android:textColor="@color/black"
-            android:hint="Tên khách hàng"
-            android:paddingStart="10dp"
-            android:fontFamily="serif"/>
+            android:hint="Tên đăng nhập"
+            android:padding="16dp"
+            android:fontFamily="serif"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/edt_ho_ten"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:textColor="@color/black"
             android:hint="Tên khách hàng"
-            android:paddingStart="10dp"
-            android:fontFamily="serif"/>
+            android:padding="16dp"
+            android:fontFamily="serif"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/edt_email"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="Email"
-            android:paddingStart="10dp"
-            android:fontFamily="serif"/>
+            android:padding="16dp"
+            android:fontFamily="serif"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/edt_sdt"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="Số điện thoại"
-            android:paddingStart="10dp"
+            android:padding="16dp"
             android:fontFamily="serif"
-            />
+            android:textSize="16sp"/>
 
 
 
         <EditText
             android:id="@+id/edtGioiTinh"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:hint="Giới tính"
-            android:paddingStart="10dp"
-            android:fontFamily="serif" />
+            android:padding="16dp"
+            android:fontFamily="serif"
+            android:textSize="16sp"/>
 
 
         <EditText
             android:id="@+id/edt_ngay_sinh"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edittex_background"
-            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:hint="Ngày sinh"
-            android:paddingStart="10dp"
+            android:padding="16dp"
             android:fontFamily="serif"
-            />
+            android:textSize="16sp"
+            android:layout_marginBottom="20dp"/>
 
 
     </LinearLayout>

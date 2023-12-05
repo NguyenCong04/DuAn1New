@@ -23,51 +23,52 @@ public class GioHangDAO {
 
     }
 
-    public long addRow(GioHangDTO objGioHang){
+    public long addRow(GioHangDTO objGioHang) {
 
         ContentValues values = new ContentValues();
-        values.put("id_san_pham",objGioHang.getIdSanPham());
-        values.put("ten_san_pham",objGioHang.getTenSanPham());
-        values.put("gia_san_pham",objGioHang.getGiaSanPham());
-        values.put("img_url",objGioHang.getImgSanPham());
-        values.put("so_luong_sp",objGioHang.getSoLuongSanPham());
-        values.put("tongTien1Sp",objGioHang.getTongTienCuaSp());
+        values.put("id_san_pham", objGioHang.getIdSanPham());
+        values.put("ten_san_pham", objGioHang.getTenSanPham());
+        values.put("gia_san_pham", objGioHang.getGiaSanPham());
+        values.put("img_url", objGioHang.getImgSanPham());
+        values.put("so_luong_sp", objGioHang.getSoLuongSanPham());
+        values.put("tongTien1Sp", objGioHang.getTongTienCuaSp());
 
 
-        return db.insert("tb_gio_hang",null,values);
+        return db.insert("tb_gio_hang", null, values);
 
 
     }
+
     //hàm update Số lượng
-    public int updateRowSoLuong(GioHangDTO objGioHang){
+    public int updateRowSoLuong(GioHangDTO objGioHang) {
 
         ContentValues values = new ContentValues();
-        values.put("tongTien1Sp",objGioHang.getTongTienCuaSp());
-        values.put("so_luong_sp",objGioHang.getSoLuongSanPham());
+        values.put("tongTien1Sp", objGioHang.getTongTienCuaSp());
+        values.put("so_luong_sp", objGioHang.getSoLuongSanPham());
 
-        return db.update("tb_gio_hang",values,"id=?",new String[]{objGioHang.getId()+""});
-
-    }
-
-
-    public int deleteRow(GioHangDTO objGioHang){
-
-        return db.delete("tb_gio_hang","id=?",new String[]{objGioHang.getId()+""});
+        return db.update("tb_gio_hang", values, "id=?", new String[]{objGioHang.getId() + ""});
 
     }
 
-    public int deleteAllDataGioHang(){
 
-        return db.delete("tb_gio_hang",null,null);
+    public int deleteRow(GioHangDTO objGioHang) {
+
+        return db.delete("tb_gio_hang", "id=?", new String[]{objGioHang.getId() + ""});
 
     }
 
-    public List<GioHangDTO> getAll(){
+    public int deleteAllDataGioHang() {
+
+        return db.delete("tb_gio_hang", null, null);
+
+    }
+
+    public List<GioHangDTO> getAll() {
 
         List<GioHangDTO> list = new ArrayList<>();
 
         Cursor cursor =
-                db.rawQuery("select * from tb_gio_hang",null);
+                db.rawQuery("select * from tb_gio_hang", null);
         if (cursor != null && cursor.getCount() > 0) {
 
             cursor.moveToFirst();
@@ -103,10 +104,6 @@ public class GioHangDAO {
         return list;
 
     }
-
-
-
-
 
 
 }

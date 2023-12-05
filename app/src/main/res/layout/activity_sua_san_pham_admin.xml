@@ -18,6 +18,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:id="@+id/ivBackSuaSp"
                 android:src="@drawable/ic_back"/>
 
             <TextView
@@ -27,7 +28,7 @@
                 android:textSize="22dp"
                 android:textStyle="bold"
                 android:fontFamily="serif"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginLeft="90dp"/>
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
@@ -42,8 +43,8 @@
                 android:text="Thông tin sản phẩm"
                 android:textSize="18dp"
                 android:fontFamily="serif"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
 
 
             <LinearLayout
@@ -51,7 +52,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/custom_bg_themsp"
-                android:padding="10dp">
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="20dp">
 
                 <EditText
                     android:id="@+id/edtSuaTenSp"
@@ -81,11 +85,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thông tin sản phẩm"
+                android:text="Mô tả sản phẩm"
                 android:textSize="18dp"
                 android:fontFamily="serif"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
                 />
 
             <LinearLayout
@@ -93,9 +97,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/custom_bg_themsp"
-                android:padding="10dp"
-                android:layout_marginTop="10dp">
-
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="20dp"
+                >
 
                 <EditText
                     android:id="@+id/edtSuaNhaCungCap"
@@ -113,7 +119,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@android:color/transparent"/>
+                    android:background="@drawable/custom_editttext_themsp"
+                    />
 
 
                 <EditText
@@ -127,22 +134,22 @@
                     android:fontFamily="serif"
                     android:layout_marginTop="10dp"/>
 
-                <Button
-                    android:id="@+id/btnSuaSp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginBottom="20dp"
-                    android:backgroundTint="#00EEEE"
-                    android:fontFamily="serif"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Hoàn thành"
-                    android:textColor="@color/black"
-                    android:textSize="17dp" />
+
             </LinearLayout>
 
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSuaSp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_btn_chi_tiet_san_pham"
+                android:fontFamily="serif"
+                android:text="Hoàn thành"
+                android:padding="18dp"
+                android:textColor="@color/white"
+                android:textSize="17dp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>

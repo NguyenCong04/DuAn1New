@@ -24,6 +24,7 @@ public class DoiMatKhauUserActivity extends AppCompatActivity {
     AppCompatButton btnDoiPass;
     private TaiKhoanDAO taiKhoanDAO;
     private List<TaiKhoanDTO> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,26 +49,27 @@ public class DoiMatKhauUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (validate()){
+                if (validate()) {
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("USER",MODE_PRIVATE);
-                    String tenDangNhap = sharedPreferences.getString("tenDangNhap","");
+                    SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+                    String tenDangNhap = sharedPreferences.getString("tenDangNhap", "");
                     String matKhauMoi = edtNewPass.getText().toString();
 
-                    int kq = taiKhoanDAO.updateMatKhau(tenDangNhap,matKhauMoi);
+                    int kq = taiKhoanDAO.updateMatKhau(tenDangNhap, matKhauMoi);
 
                     if (kq > 0) {
 
                         Toast.makeText(DoiMatKhauUserActivity.this, "Đổi mật khẩu thành công"
                                 , Toast.LENGTH_SHORT).show();
-
-                    }else {
+                        edtNewPass.setText("");
+                        edtOldPass.setText("");
+                        edtNewPassAgain.setText("");
+                    } else {
 
                         Toast.makeText(DoiMatKhauUserActivity.this, "Đổi mật khẩu thành công"
                                 , Toast.LENGTH_SHORT).show();
 
                     }
-
 
 
                 }
@@ -79,16 +81,16 @@ public class DoiMatKhauUserActivity extends AppCompatActivity {
 
     private boolean validate() {
 
-        if (edtOldPass.getText().length() == 0 || edtNewPass.getText().length() == 0 || edtNewPassAgain.getText().length() == 0){
+        if (edtOldPass.getText().length() == 0 || edtNewPass.getText().length() == 0 || edtNewPassAgain.getText().length() == 0) {
             Toast.makeText(this, "Mời nhập thông tin", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!edtNewPass.getText().toString().equals(edtNewPassAgain.getText().toString())){
+        if (!edtNewPass.getText().toString().equals(edtNewPassAgain.getText().toString())) {
             Toast.makeText(this, "Mật khẩu không trùng khớp", Toast.LENGTH_SHORT).show();
             return false;
         }
-        SharedPreferences sharedPreferences = getSharedPreferences("USER",MODE_PRIVATE);
-        String matKhauCu = sharedPreferences.getString("matKhau","");
+        SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
+        String matKhauCu = sharedPreferences.getString("matKhau", "");
 
         if (!matKhauCu.equals(edtOldPass.getText().toString())) {
 

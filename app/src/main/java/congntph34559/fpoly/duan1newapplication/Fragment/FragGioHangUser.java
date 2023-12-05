@@ -46,7 +46,7 @@ import congntph34559.fpoly.duan1newapplication.R;
 
 public class FragGioHangUser extends Fragment {
 
-     List<GioHangDTO> listGioHangFrag;
+    List<GioHangDTO> listGioHangFrag;
     GioHangDAO gioHangDAO;
     RecyclerView recyclerView;
     AdapterGioHang adapterGioHang;
@@ -63,7 +63,7 @@ public class FragGioHangUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frag_gio_hang_user,container,false);
+        return inflater.inflate(R.layout.frag_gio_hang_user, container, false);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class FragGioHangUser extends Fragment {
         recyclerView = view.findViewById(R.id.rcvGioHang);
         adapterGioHang = new AdapterGioHang(getContext(), listGioHangFrag);
         LinearLayoutManager linearLayoutManager =
-                new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+                new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapterGioHang);
         adapterGioHang.notifyDataSetChanged();
@@ -90,14 +90,6 @@ public class FragGioHangUser extends Fragment {
 
         //Gọi hàm đặt hàng
         datHang();
-
-
-
-
-
-
-
-
 
 
         super.onViewCreated(view, savedInstanceState);
@@ -119,7 +111,6 @@ public class FragGioHangUser extends Fragment {
         });
 
 
-
     }
 
     private boolean kiemTraShowBottomSheet() {
@@ -127,7 +118,7 @@ public class FragGioHangUser extends Fragment {
         if (listGioHangFrag.size() == 0) {
 
             Toast.makeText(getContext(), "Giỏ hàng không có sản phẩm"
-                    ,Toast.LENGTH_SHORT).show();
+                    , Toast.LENGTH_SHORT).show();
             return false;
 
         }
@@ -143,14 +134,14 @@ public class FragGioHangUser extends Fragment {
         @SuppressLint("InflateParams") View view1 =
                 LayoutInflater.from(requireContext())
                         .inflate(R.layout.layout_bottom_sheet_gio_hang_user
-                                ,null,false);
+                                , null, false);
 
         BottomSheetDialog sheetDialog = new BottomSheetDialog(requireContext());
         sheetDialog.setContentView(view1);
         //Khởi tạo các view
-        TextView tvThucDon,tvTongTien,tvThoiGian;
-        EditText edTenNguoiNhan,edSoDienThoai,edDiaChi;
-        AppCompatButton btnHuy,btnXacNhan;
+        TextView tvThucDon, tvTongTien, tvThoiGian;
+        EditText edTenNguoiNhan, edSoDienThoai, edDiaChi;
+        AppCompatButton btnHuy, btnXacNhan;
         //Ánh xạ
         tvThucDon = view1.findViewById(R.id.tvThucPham);
         edTenNguoiNhan = view1.findViewById(R.id.edTenNguoiNhanBottomSheet);
@@ -178,9 +169,9 @@ public class FragGioHangUser extends Fragment {
                 if (listSanPham.get(j).getTenSanPhamUser().equals(AdapterGioHang.list.get(i).getTenSanPham())) {
 
                     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                    hoaDon += "- "+listSanPham.get(j).getTenSanPhamUser()
-                            +", Số lượng: "+AdapterGioHang.list.get(i).getSoLuongSanPham()+"Kg"+
-                            ", "+"Đơn giá: "+decimalFormat.format(AdapterGioHang.list.get(i).getTongTienCuaSp())+" VND"+"\n";
+                    hoaDon += "- " + listSanPham.get(j).getTenSanPhamUser()
+                            + ", Số lượng: " + AdapterGioHang.list.get(i).getSoLuongSanPham() + "Kg" +
+                            ", " + "Đơn giá: " + decimalFormat.format(AdapterGioHang.list.get(i).getTongTienCuaSp()) + " VND" + "\n";
                     idSp += listSanPham.get(j).getIdSanPhamUser();
                     break;
 
@@ -189,11 +180,10 @@ public class FragGioHangUser extends Fragment {
         }
 
 
-
         tvThucDon.setText(hoaDon);//set những món có trong giỏ hàng
         edTenNguoiNhan.setText(tenDangNhap);// lấy  tên đăng nhập làm tên người nhận
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        tvTongTien.setText("Tổng tiền thanh toán: "+decimalFormat.format(tinhTongTienBottomSheet())+" VND");//Lấy tổng tiền
+        tvTongTien.setText("Tổng tiền thanh toán: " + decimalFormat.format(tinhTongTienBottomSheet()) + " VND");//Lấy tổng tiền
         //Lấy giờ và ngày đặt
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -202,7 +192,7 @@ public class FragGioHangUser extends Fragment {
         String gioDat = simpleDateFormat1.format(calendar.getTime());
 
         //set ngày và giờ đặt cho textview Trong bottom sheet
-        tvThoiGian.setText("Thời gian: "+gioDat+" "+ngayDat);
+        tvThoiGian.setText("Thời gian: " + gioDat + " " + ngayDat);
 
 
         btnHuy.setOnClickListener(new View.OnClickListener() {
@@ -219,11 +209,33 @@ public class FragGioHangUser extends Fragment {
             public void onClick(View v) {
 
                 if (kiemTra()) {
-
                     String tenKhach = edTenNguoiNhan.getText().toString();
                     String soDienThoai = edSoDienThoai.getText().toString();
                     String diaChi = edDiaChi.getText().toString();
 
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_xac_nhan, null, false);
+                    builder.setView(view);
+
+                    AlertDialog dialog = builder.create();
+                    Window window = dialog.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+                    AppCompatButton btnXacNhan, btnHuy;
+
+                    btnHuy = view.findViewById(R.id.btnHuyDialog);
+                    btnXacNhan = view.findViewById(R.id.btnXacNhanDialog);
+
+                    btnHuy.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+                    btnXacNhan.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
                     DonDatUserDTO objDonDat = new DonDatUserDTO();
                     objDonDat.setIdSanPham(finalIdSp);
@@ -235,32 +247,39 @@ public class FragGioHangUser extends Fragment {
                     objDonDat.setTrangThai("Đã đặt");
                     objDonDat.setTongTien(tinhTongTienBottomSheet());
 
-                    long kq = donDatUserDAO.addRow(objDonDat);
+                            long kq = donDatUserDAO.addRow(objDonDat);
 
-                    if (kq > 0) {
+                            if (kq > 0) {
 
-                        Toast.makeText(getContext(), "Đặt thành công", Toast.LENGTH_SHORT).show();
-                        list.clear();
-                        list.addAll(donDatUserDAO.getAll());
-                        gioHangDAO.deleteAllDataGioHang();
-                        AdapterGioHang.list.clear();
-                        listGioHangFrag.clear();
-                        tinhTongTien();
-                        sheetDialog.dismiss();
+                                Toast.makeText(getContext(), "Đặt thành công", Toast.LENGTH_SHORT).show();
+                                list.clear();
+                                list.addAll(donDatUserDAO.getAll());
+                                gioHangDAO.deleteAllDataGioHang();
+                                AdapterGioHang.list.clear();
+                                listGioHangFrag.clear();
+                                tinhTongTien();
+                                sheetDialog.dismiss();
+                                dialog.dismiss();
 
 
+                            } else {
 
-                    }else {
+                                Toast.makeText(getContext(), "Đặt thất bại", Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(getContext(), "Đặt thất bại", Toast.LENGTH_SHORT).show();
+                            }
 
-                    }
+                        }
+                    });
+
+                    dialog.show();
+
+
                 }
             }
 
             private boolean kiemTra() {
 
-                if (edDiaChi.getText().toString().equals("")||edSoDienThoai.getText().toString().equals("")) {
+                if (edDiaChi.getText().toString().equals("") || edSoDienThoai.getText().toString().equals("")) {
 
                     Toast.makeText(getContext(), "Mời nhập thông tin cá nhân", Toast.LENGTH_SHORT).show();
                     return false;
@@ -275,7 +294,7 @@ public class FragGioHangUser extends Fragment {
 
                 }
 
-                if (edDiaChi.getText().toString().length() < 5 ) {
+                if (edDiaChi.getText().toString().length() < 5) {
 
                     Toast.makeText(getContext(), "Địa chỉ phải trên 5 ký tự"
                             , Toast.LENGTH_SHORT).show();
@@ -291,18 +310,17 @@ public class FragGioHangUser extends Fragment {
         sheetDialog.show();
 
 
-
     }
 
     //Hàm tính tổng tiền
     private void tinhTongTien() {
-        int  tongTien = 0;
+        int tongTien = 0;
         for (int i = 0; i < listGioHangFrag.size(); i++) {
 
             tongTien = tongTien + (listGioHangFrag.get(i).getGiaSanPham() * listGioHangFrag.get(i).getSoLuongSanPham());
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        tvTongTienGioHang.setText("Tổng tiền : "+decimalFormat.format(tongTien)+" VND");
+        tvTongTienGioHang.setText("Tổng tiền : " + decimalFormat.format(tongTien) + " VND");
 
     }
 
@@ -314,7 +332,6 @@ public class FragGioHangUser extends Fragment {
         }
         return tongTienButtonSheet;
     }
-
 
 
 }

@@ -21,7 +21,8 @@ import congntph34559.fpoly.duan1newapplication.DTO.DanhSachSanPhamDTO;
 import congntph34559.fpoly.duan1newapplication.R;
 
 public class FragQuaDanhSachSanPhamUse extends Fragment {
-    RecyclerView recyclerDanhSachSanPhamQuaUse;
+    public static RecyclerView recyclerDanhSachSanPhamQuaUse;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,14 +38,11 @@ public class FragQuaDanhSachSanPhamUse extends Fragment {
         DanhSachSanPhamDAO danhSachSanPhamDAO = new DanhSachSanPhamDAO(getContext());
         ArrayList<DanhSachSanPhamDTO> list = danhSachSanPhamDAO.getDSSanPhamQua();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerDanhSachSanPhamQuaUse.setLayoutManager(linearLayoutManager);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerDanhSachSanPhamQuaUse.setLayoutManager(gridLayoutManager);
 
         AdapterDanhSachSanPhamQua adapterDanhSachSanPhamQua = new AdapterDanhSachSanPhamQua(list, getContext());
         recyclerDanhSachSanPhamQuaUse.setAdapter(adapterDanhSachSanPhamQua);
-
-        Log.e("TAG", "onViewCreated: " + list );
+        adapterDanhSachSanPhamQua.notifyDataSetChanged();
     }
 }

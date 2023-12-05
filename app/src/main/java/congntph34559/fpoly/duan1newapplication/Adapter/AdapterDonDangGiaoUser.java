@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +19,13 @@ import congntph34559.fpoly.duan1newapplication.ChiTietDonDatUserActivity;
 import congntph34559.fpoly.duan1newapplication.DTO.DonDatUserDTO;
 import congntph34559.fpoly.duan1newapplication.R;
 
-public class AdapterDonHuyUser extends RecyclerView.Adapter<AdapterDonHuyUser.ViewHolder> {
+public class AdapterDonDangGiaoUser extends RecyclerView.Adapter<AdapterDonDangGiaoUser.ViewHolder> {
 
 
     Context context;
     List<DonDatUserDTO> list;
 
-    public AdapterDonHuyUser(Context context, List<DonDatUserDTO> list) {
+    public AdapterDonDangGiaoUser(Context context, List<DonDatUserDTO> list) {
         this.context = context;
         this.list = list;
     }
@@ -51,7 +50,6 @@ public class AdapterDonHuyUser extends RecyclerView.Adapter<AdapterDonHuyUser.Vi
         holder.tvDanhSachSp.setText("" + list.get(position).getTenSanPham());
         holder.tvTenKhach.setText("Tên khách hàng : " + list.get(position).getTenKhachHang());
         holder.tvTrangThai.setText(list.get(position).getTrangThai());
-        holder.tvTrangThai.setTextColor(Color.RED);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +60,7 @@ public class AdapterDonHuyUser extends RecyclerView.Adapter<AdapterDonHuyUser.Vi
                 remenberDonDat(
                         id.getId(), id.getTenKhachHang(), id.getSoDienThoai(), id.getDiaChi(),
                         id.getTenSanPham(), id.getTongTien(), id.getNgayDat(), id.getTrangThai()
+
                 );
                 Intent intent = new Intent(((Activity) context), ChiTietDonDatUserActivity.class);
                 intent.putExtra("idHoaDon", id.getId());
@@ -71,10 +70,7 @@ public class AdapterDonHuyUser extends RecyclerView.Adapter<AdapterDonHuyUser.Vi
                 intent.putExtra("tenSanPham", id.getTenSanPham());
                 intent.putExtra("tongTien", id.getTongTien());
                 intent.putExtra("ngayDat", id.getNgayDat());
-                intent.putExtra("trangThai", id.getTrangThai());
                 ((Activity) context).startActivity(intent);
-
-
             }
         });
 

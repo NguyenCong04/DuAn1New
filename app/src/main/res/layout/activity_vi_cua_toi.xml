@@ -34,7 +34,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/background_lien_he">
 
         <TextView
@@ -43,7 +45,12 @@
             android:text="Số dư: "
             android:textSize="20sp"
             android:fontFamily="serif"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="match_parent"
@@ -54,7 +61,7 @@
             android:layout_marginTop="20dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -68,7 +75,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_15"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,13 +99,15 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_16"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="12dp"/>
+                    android:layout_marginStart="12dp"
+                    android:adjustViewBounds="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Quét mã QR"
-                    android:fontFamily="serif"/>
+                    android:fontFamily="serif"
+                    android:adjustViewBounds="true"/>
 
 
             </LinearLayout>
@@ -114,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_17"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="16dp"/>
+                    android:layout_marginStart="16dp"
+                    android:adjustViewBounds="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -130,7 +141,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingBottom="15dp">
@@ -145,7 +156,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_18"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,7 +180,8 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_19"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="15dp"
+                    android:adjustViewBounds="true"/>
 
                 <TextView
                     android:layout_width="wrap_content"

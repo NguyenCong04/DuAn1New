@@ -2,6 +2,7 @@ package congntph34559.fpoly.duan1newapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,9 +29,9 @@ import congntph34559.fpoly.duan1newapplication.DTO.SanPhamRauAdminDTO;
 public class SuaSanPhamAdmin extends AppCompatActivity {
     EditText edtSuatensp, edtSuaGiasp, edtSuaNhaCungCap, edtSuaMoTa;
 
-
-    Button btnSuasp;
+    AppCompatButton btnSuasp;
     Spinner spnCategorySuaSp;
+    ImageView ivBack;
 
     private SanPhamRauAdminDTO dto;
 
@@ -51,6 +52,7 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
         edtSuaNhaCungCap = findViewById(R.id.edtSuaNhaCungCap);
         edtSuaMoTa = findViewById(R.id.edtSuaMoTa);
         spnCategorySuaSp = findViewById(R.id.spnCategorySuaSp);
+        ivBack = findViewById(R.id.ivBackSuaSp);
 
 
         dbHelper = new MyDBHelper(SuaSanPhamAdmin.this);
@@ -80,10 +82,22 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
             }
         });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
+            }
+        });
+
+
+
     }
+
 
     private String getTenLoai(int positionSpinner) {
         String tenLoai = "";
+
 
         switch (positionSpinner) {
             case 0:
@@ -96,7 +110,6 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
                 tenLoai = "Quả";
                 break;
         }
-
         return tenLoai;
     }
 
@@ -107,10 +120,8 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
         list.add(new String("Quả"));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         spinnerAdmin.setAdapter(adapter);
-
         spinnerAdmin.setSelection(positionSpinner);
     }
-
 
     private void getDataIntent() {
         Intent intent = getIntent();
@@ -136,5 +147,6 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
             spnCategorySuaSp.setSelection(positionSpinner);
         }
     }
+
 
 }

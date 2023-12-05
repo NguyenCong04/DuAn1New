@@ -20,7 +20,7 @@ import congntph34559.fpoly.duan1newapplication.R;
 
 public class FragCuDanhSachSanPhamUse extends Fragment {
 
-    RecyclerView recyclerviewDanhSachSanPhamCu;
+    public static RecyclerView recyclerviewDanhSachSanPhamCu;
 
     @Nullable
     @Override

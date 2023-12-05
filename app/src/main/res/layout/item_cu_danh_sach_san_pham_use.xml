@@ -69,7 +69,7 @@
                     android:layout_width="25dp"
                     android:layout_height="wrap_content"
 
-                    android:id="@+id/ivIconGioHangItem"
+                    android:id="@+id/ivIconGioHangItemCu"
 
                     android:src="@drawable/icon_gio_hang_trang_chu"
                     android:adjustViewBounds="true"

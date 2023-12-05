@@ -29,7 +29,7 @@ import congntph34559.fpoly.duan1newapplication.ThemSanPhamAdmin;
 
 public class FragmentCuTrangChuAdmin extends Fragment implements AdapterSanPhamCuAdmin.SanPhamAdminInterface, AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
-    private RecyclerView recyclerViewCuAdmin;
+    public static RecyclerView recyclerViewCuAdmin;
     private FloatingActionButton fltAddCuAdmin;
     private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
 
@@ -59,18 +59,18 @@ public class FragmentCuTrangChuAdmin extends Fragment implements AdapterSanPhamC
 
     }
 
-    private void intiData(){
+    private void intiData() {
         TrangChuAdminDAO trangChuAdminDAO = new TrangChuAdminDAO(getContext());
         ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamCuAdmin();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerViewCuAdmin.setLayoutManager(gridLayoutManager);
-        AdapterSanPhamCuAdmin adapterSanPhamCuAdmin = new AdapterSanPhamCuAdmin(list,getContext(),listener);
+        AdapterSanPhamCuAdmin adapterSanPhamCuAdmin = new AdapterSanPhamCuAdmin(list, getContext(), listener);
         recyclerViewCuAdmin.setAdapter(adapterSanPhamCuAdmin);
         adapterSanPhamCuAdmin.notifyDataSetChanged();
 //        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         intiData();
     }

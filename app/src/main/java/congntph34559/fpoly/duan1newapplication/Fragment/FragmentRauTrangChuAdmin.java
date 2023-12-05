@@ -32,12 +32,10 @@ import congntph34559.fpoly.duan1newapplication.ThemSanPhamAdmin;
 
 public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
-
-    private RecyclerView recyclerViewRauAdmin;
+    public static RecyclerView recyclerViewRauAdmin;
     private FloatingActionButton fltRauAdmin;
 
     private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +47,6 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         listener = this;
         recyclerViewRauAdmin = view.findViewById(R.id.recyclerRauAdmin);
         fltRauAdmin = view.findViewById(R.id.fltAddRauAdmin);
@@ -59,8 +56,6 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
         fltRauAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 startActivity(new Intent(getContext(), ThemSanPhamAdmin.class));
             }
         });
@@ -73,6 +68,9 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
                 return false;
             }
         });
+
+
+
     }
 
     private void intiData() {
