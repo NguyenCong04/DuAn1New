@@ -1,6 +1,7 @@
 package congntph34559.fpoly.duan1newapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +27,9 @@ import congntph34559.fpoly.duan1newapplication.DTO.SanPhamRauAdminDTO;
 public class SuaSanPhamAdmin extends AppCompatActivity {
     EditText edtSuatensp, edtSuaGiasp, edtSuaNhaCungCap, edtSuaMoTa;
 
-    Button btnSuasp;
+    AppCompatButton btnSuasp;
     Spinner spnCategorySuaSp;
+    ImageView ivBack;
 
     private SanPhamRauAdminDTO dto;
 
@@ -45,6 +47,7 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
         edtSuaNhaCungCap = findViewById(R.id.edtSuaNhaCungCap);
         edtSuaMoTa = findViewById(R.id.edtSuaMoTa);
         spnCategorySuaSp = findViewById(R.id.spnCategorySuaSp);
+        ivBack = findViewById(R.id.ivBackSuaSp);
 
         dbHelper = new MyDBHelper(SuaSanPhamAdmin.this);
         dao = new TrangChuAdminDAO(SuaSanPhamAdmin.this);
@@ -70,6 +73,13 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
                 }
 
 
+            }
+        });
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
             }
         });
 

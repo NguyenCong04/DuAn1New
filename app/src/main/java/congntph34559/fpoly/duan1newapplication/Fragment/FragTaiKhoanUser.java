@@ -3,14 +3,19 @@ package congntph34559.fpoly.duan1newapplication.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -61,7 +66,6 @@ public class FragTaiKhoanUser extends Fragment {
         });
 
 
-
         btnViCaNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,9 +85,44 @@ public class FragTaiKhoanUser extends Fragment {
         btnDangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), WelcomeActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                View view1 = LayoutInflater.from(getContext()).inflate(R.layout.dialog_xac_nhan, null, false);
+                builder.setView(view1);
+
+                AlertDialog dialog = builder.create();
+                Window window = dialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                AppCompatButton btnXacNhan, btnHuy;
+                TextView tvNoiDung;
+
+                btnHuy = view1.findViewById(R.id.btnHuyDialog);
+                btnXacNhan = view1.findViewById(R.id.btnXacNhanDialog);
+                tvNoiDung = view1.findViewById(R.id.tvNoiDungDialog);
+                tvNoiDung.setText("Bạn có chắc chắn muốn đăng xuất không ?");
+
+                btnXacNhan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(), WelcomeActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                });
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+                dialog.show();
+
+
             }
         });
 

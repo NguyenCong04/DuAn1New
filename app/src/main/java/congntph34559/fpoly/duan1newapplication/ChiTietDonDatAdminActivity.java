@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Random;
 
 import congntph34559.fpoly.duan1newapplication.DAO.DonDatUserDAO;
 import congntph34559.fpoly.duan1newapplication.DTO.DonDatUserDTO;
@@ -16,10 +17,11 @@ import congntph34559.fpoly.duan1newapplication.DTO.DonDatUserDTO;
 public class ChiTietDonDatAdminActivity extends AppCompatActivity {
 
     ImageView imgBackChiTietAdmin;
-    TextView txtTenKh, txtSoDienThoai, txtDiaChi, txtTenSanPham ,txtThoiGian, txtTrangThai,txtTongTien;
+    TextView txtTenKh, txtSoDienThoai, txtDiaChi, txtTenSanPham, txtThoiGian, txtTrangThai, txtTongTien, tvMaDonDat;
     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
     List<DonDatUserDTO> list;
     DonDatUserDAO donDatUserDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class ChiTietDonDatAdminActivity extends AppCompatActivity {
         txtThoiGian = findViewById(R.id.txtThoiGianChiTiet);
         txtTrangThai = findViewById(R.id.txtTrangThaiChiTiet);
         txtTongTien = findViewById(R.id.txtTongTienChiTiet);
+        tvMaDonDat = findViewById(R.id.tvMaDonHangChiTietDonHang);
 
         //nhận dữ lệu
         int id = getIntent().getIntExtra("idHoaDon", 0);
@@ -50,12 +53,27 @@ public class ChiTietDonDatAdminActivity extends AppCompatActivity {
             }
         });
 
-        txtTenKh.setText("Họ tên: "+tenKhachHang);
-        txtSoDienThoai.setText("Số điện thoại: "+soDienThoai);
-        txtDiaChi.setText("Địa chỉ: "+diaChi);
+        //Tạo chuỗi ngẫu nhiên
+        Random random = new Random();
+        String kiTuRamDom = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+        StringBuilder maRamDom = new StringBuilder();
+        int soLuongKiTuRanDom = 8;
+
+        for (int i = 0; i < soLuongKiTuRanDom; i++) {
+
+            maRamDom.append(kiTuRamDom.charAt(random.nextInt(kiTuRamDom.length())));
+
+
+        }
+
+
+        tvMaDonDat.setText(id + "" + maRamDom);
+        txtTenKh.setText("Họ tên: " + tenKhachHang);
+        txtSoDienThoai.setText("Số điện thoại: " + soDienThoai);
+        txtDiaChi.setText("Địa chỉ: " + diaChi);
         txtTenSanPham.setText(tenSanPham);
         txtThoiGian.setText(ngayDat);
         txtTrangThai.setText(trangThai);
-        txtTongTien.setText("Tổng tiền: "+decimalFormat.format(tongTien)+" VND");
+        txtTongTien.setText("Tổng tiền: " + decimalFormat.format(tongTien) + " VND");
     }
 }

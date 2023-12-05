@@ -69,8 +69,8 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ivIconGioHangItem"
-                    android:src="@drawable/icon_gio_hang_trang_chu"
+                    android:id="@+id/ivIconSuaItem"
+                    android:src="@drawable/icon_sua_sp"
                     android:adjustViewBounds="true"
 
                     />

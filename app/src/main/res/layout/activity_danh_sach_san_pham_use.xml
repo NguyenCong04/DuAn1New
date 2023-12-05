@@ -4,30 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DanhSachSanPhamUseActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    tools:context=".DanhSachSanPhamUseActivity">
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar_danh_sach_sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_lien_he">
+        android:background="@drawable/custom_tieu_de_frag"
+        android:elevation="3dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Danh Sách Sản Phẩm"
-            android:textStyle="bold"
+            android:layout_gravity="center"
             android:fontFamily="serif"
+            android:text="Danh sách sản phẩm"
             android:textSize="20sp"
-            android:layout_gravity="center"/>
+            android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/img_10"/>
+            android:id="@+id/ivBackDanhSachSanPham"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_10" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -35,38 +37,47 @@
     <EditText
         android:id="@+id/edt_search"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/search_background"
-        android:drawableStart="@drawable/img"
+        android:background="@drawable/custom_search_trang_chu_admin"
+        android:drawableStart="@drawable/icon_seach"
         android:drawablePadding="8dp"
+        android:elevation="3dp"
         android:fontFamily="serif"
         android:hint="Tìm kiếm thực phẩm"
         android:inputType="text"
-        android:padding="8dp" />
+        android:padding="16dp" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_search">
+        android:layout_below="@+id/edt_search"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@android:color/darker_gray">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rau"/>
+            android:text="Rau" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Củ"/>
+            android:text="Củ" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quả"/>
+            android:text="Quả" />
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -75,6 +86,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_paper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

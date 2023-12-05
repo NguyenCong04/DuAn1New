@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +45,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view1 = LayoutInflater.from(context).inflate(R.layout.item_san_pham_trang_chu,parent,false);
+        View view1 = LayoutInflater.from(context).inflate(R.layout.item_san_pham_trang_chu, parent, false);
 
         return new ViewHolder(view1);
     }
@@ -53,17 +56,26 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
         SanPhamTrangChuUserDTO id = list.get(position);
 
         String tenImg = list.get(position).getAnhSanPhamUser();
-        int resourceImg = (((Activity)context).getResources().
-                getIdentifier(tenImg,"drawable",((Activity)context).getPackageName()));
+        int resourceImg = (((Activity) context).getResources().
+                getIdentifier(tenImg, "drawable", ((Activity) context).getPackageName()));
         holder.ivAnhSanPham.setImageResource(resourceImg);
         holder.tvTenSanPham.setText(list.get(position).getTenSanPhamUser());
-        holder.tvGiaSanPham.setText(decimalFormat.format(list.get(position).getGiaSanPhamUser())+" VND / 1kg");
+        holder.tvGiaSanPham.setText(decimalFormat.format(list.get(position).getGiaSanPhamUser()) + " VND / 1kg");
+
+        String base64 = list.get(position).getAnhSanPhamUser();
+        try {
+            byte[] imageBytes = android.util.Base64.decode(base64, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+            if (bitmap != null) {
+                holder.ivAnhSanPham.setImageBitmap(bitmap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         gioHangDAO = new GioHangDAO(context);
         listGioHang = gioHangDAO.getAll();
-
-
-
         holder.ivIconGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +100,7 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
                     Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
 
 
-                }else {
+                } else {
 
                     Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
 
@@ -101,15 +113,13 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
             @Override
             public void onClick(View v) {
 
-//                ((Activity)context).startActivity(
-//                        new Intent(((Activity)context), ChiTietSanPhamActivity.class));
-                remenberItem(id.getTenSanPhamUser(),id.getGiaSanPhamUser(),id.getAnhSanPhamUser(),id.getMoTaSp());
-                Intent intent = new Intent(((Activity)context),ChiTietSanPhamActivity.class);
-                intent.putExtra("tenSp",id.getTenSanPhamUser());
-                intent.putExtra("giaSp",id.getGiaSanPhamUser());
-                intent.putExtra("anhSp",id.getAnhSanPhamUser());
-                intent.putExtra("moTaSp",id.getMoTaSp());
-                ((Activity)context).startActivity(intent);
+                remenberItem(id.getTenSanPhamUser(), id.getGiaSanPhamUser(), id.getAnhSanPhamUser(), id.getMoTaSp());
+                Intent intent = new Intent(((Activity) context), ChiTietSanPhamActivity.class);
+//                intent.putExtra("tenSp",id.getTenSanPhamUser());
+//                intent.putExtra("giaSp",id.getGiaSanPhamUser());
+//                intent.putExtra("anhSp",id.getAnhSanPhamUser());
+//                intent.putExtra("moTaSp",id.getMoTaSp());
+                ((Activity) context).startActivity(intent);
 
 
             }
@@ -118,15 +128,15 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
 
     }
 
-    private void remenberItem(String tenSanPhamUser,int giaSanPham,String anhSp,String moTaSp) {
+    private void remenberItem(String tenSanPhamUser, int giaSanPham, String anhSp, String moTaSp) {
 
-        SharedPreferences sharedPreferences = context.getSharedPreferences("Item",Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("PRODUCT", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        editor.putString("tenSp",tenSanPhamUser);
-        editor.putInt("giaSp",giaSanPham);
-        editor.putString("anhSp",anhSp);
-        editor.putString("moTaSp",moTaSp);
+        editor.putString("tenSp", tenSanPhamUser);
+        editor.putInt("donGia", giaSanPham);
+        editor.putString("anhSp", anhSp);
+        editor.putString("moTa", moTaSp);
         editor.apply();
 
 
@@ -137,13 +147,11 @@ public class AdapterTrangChuUser extends RecyclerView.Adapter<AdapterTrangChuUse
         return list.size();
     }
 
-    public static  class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView ivAnhSanPham,ivIconGioHang;
-        TextView tvTenSanPham,tvGiaSanPham;
+        ImageView ivAnhSanPham, ivIconGioHang;
+        TextView tvTenSanPham, tvGiaSanPham;
         CardView layoutItem;
-
-
 
 
         public ViewHolder(@NonNull View itemView) {

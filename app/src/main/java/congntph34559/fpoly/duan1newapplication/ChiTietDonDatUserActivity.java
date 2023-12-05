@@ -28,13 +28,14 @@ import congntph34559.fpoly.duan1newapplication.DTO.SanPhamTrangChuUserDTO;
 public class ChiTietDonDatUserActivity extends AppCompatActivity {
 
     ImageView ivBack;
-    TextView tvTenKhach,tvSoDienThoai,tvDiaChi,tvDanhSachSp,tvTongTien,tvThoiGian,tvMaDonHang;
+    TextView tvTrangThai, tvTenKhach, tvSoDienThoai, tvDiaChi, tvDanhSachSp, tvTongTien, tvThoiGian, tvMaDonHang;
     DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
     AppCompatButton btnHuy;
     List<DonDatUserDTO> list;
     List<SanPhamTrangChuUserDTO> listSp;
     SanPhamTrangChuDAO sanPhamTrangChuDAO;
     DonDatUserDAO donDatUserDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,24 +48,23 @@ public class ChiTietDonDatUserActivity extends AppCompatActivity {
         tvTongTien = findViewById(R.id.tvTongTienChiTietDonDat);
         tvThoiGian = findViewById(R.id.tvThoiGianDatHangChiTietDonHang);
         tvMaDonHang = findViewById(R.id.tvMaDonHangChiTietDonHang);
+        tvTrangThai = findViewById(R.id.tvTrangThai);
         btnHuy = findViewById(R.id.btnHuyDonChiTietDonDat);
 
         //Khởi tạo dao
         donDatUserDAO = new DonDatUserDAO(this);
         list = donDatUserDAO.donDat();
-//        sanPhamTrangChuDAO = new SanPhamTrangChuDAO(this);
-//        listSp = sanPhamTrangChuDAO.getAll();
-
 
 
         //Nhận dữ liệu
-         int id = getIntent().getIntExtra("idHoaDon",0);
+        int id = getIntent().getIntExtra("idHoaDon", 0);
         String tenKhachHang = getIntent().getStringExtra("tenKhach");
         String soDienThoai = getIntent().getStringExtra("soDienThoai");
         String diaChi = getIntent().getStringExtra("diaChi");
         String tenSanPham = getIntent().getStringExtra("tenSanPham");
-        int tongTien = getIntent().getIntExtra("tongTien",0);
+        int tongTien = getIntent().getIntExtra("tongTien", 0);
         String ngayDat = getIntent().getStringExtra("ngayDat");
+        String trangThai = getIntent().getStringExtra("trangThai");
 
         Random random = new Random();
         String stringRamdon = "QWERTYUIOPJASDFGHJKZXCVBNMqwertyuiopkjhgfdsazxcvbnm";
@@ -77,13 +77,22 @@ public class ChiTietDonDatUserActivity extends AppCompatActivity {
         }
 
         //set cho các viewTrong Đơn đặt
-        tvTenKhach.setText("Họ tên: "+tenKhachHang);
-        tvSoDienThoai.setText("SĐT: "+soDienThoai);
-        tvDiaChi.setText("Địa chỉ: "+diaChi);
+        tvTenKhach.setText("Họ tên: " + tenKhachHang);
+        tvSoDienThoai.setText("SĐT: " + soDienThoai);
+        tvDiaChi.setText("Địa chỉ: " + diaChi);
         tvDanhSachSp.setText(tenSanPham);
-        tvTongTien.setText("Tổng tiền: "+decimalFormat.format(tongTien)+" VND");
+        tvTongTien.setText("Tổng tiền: " + decimalFormat.format(tongTien) + " VND");
         tvThoiGian.setText(ngayDat);
-        tvMaDonHang.setText(id+""+maRamDom);
+        tvMaDonHang.setText(id + "" + maRamDom);
+        tvTrangThai.setText(trangThai);
+
+        //Kiểm tra trạng thái nếu là đang giao và hoàn thành
+        // và đã hủy thì ẩn đi nút hủy ở chi tiết đơn đặt
+        if (trangThai.equals("Hủy") || trangThai.equals("Đang giao hàng") || trangThai.equals("Đã thanh toán")) {
+
+            btnHuy.setVisibility(View.GONE);
+
+        }
 
 
         btnHuy.setOnClickListener(new View.OnClickListener() {
@@ -93,16 +102,16 @@ public class ChiTietDonDatUserActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietDonDatUserActivity.this);
                 View view1 = LayoutInflater
                         .from(ChiTietDonDatUserActivity.this)
-                        .inflate(R.layout.dialog_xac_nhan,null,false);
+                        .inflate(R.layout.dialog_xac_nhan, null, false);
 
                 builder.setView(view1);
 
                 AlertDialog dialog = builder.create();
                 Window window = dialog.getWindow();
                 window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
-                AppCompatButton btnXacNhan,btnHuy;
+                AppCompatButton btnXacNhan, btnHuy;
                 TextView tvNoiDung;
                 btnHuy = view1.findViewById(R.id.btnHuyDialog);
                 btnXacNhan = view1.findViewById(R.id.btnXacNhanDialog);
@@ -137,7 +146,7 @@ public class ChiTietDonDatUserActivity extends AppCompatActivity {
                             dialog.dismiss();
                             onBackPressed();
 
-                        }else {
+                        } else {
 
                             Toast.makeText(ChiTietDonDatUserActivity.this, "Hủy thất bại", Toast.LENGTH_SHORT).show();
 
@@ -151,12 +160,8 @@ public class ChiTietDonDatUserActivity extends AppCompatActivity {
                 dialog.show();
 
 
-
-
-
             }
         });
-
 
 
         ivBack.setOnClickListener(new View.OnClickListener() {

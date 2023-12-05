@@ -26,7 +26,7 @@ public class FragDonDatHomeUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frag_don_dat_home_user,container,false);
+        return inflater.inflate(R.layout.frag_don_dat_home_user, container, false);
     }
 
     @Override
@@ -42,12 +42,18 @@ public class FragDonDatHomeUser extends Fragment {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
 
-                switch (position){
+                switch (position) {
 
                     case 0:
                         tab.setText("Đơn đặt");
                         break;
                     case 1:
+                        tab.setText("Giao hàng");
+                        break;
+                    case 2:
+                        tab.setText("Hoàn thành");
+                        break;
+                    case 3:
                         tab.setText("Đơn hủy");
                         break;
                 }
@@ -55,7 +61,6 @@ public class FragDonDatHomeUser extends Fragment {
             }
         });
         mediator.attach();
-
 
 
         super.onViewCreated(view, savedInstanceState);

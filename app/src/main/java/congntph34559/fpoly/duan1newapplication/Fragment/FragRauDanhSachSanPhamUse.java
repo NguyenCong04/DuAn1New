@@ -21,7 +21,7 @@ import congntph34559.fpoly.duan1newapplication.R;
 
 public class FragRauDanhSachSanPhamUse extends Fragment {
 
-    RecyclerView recyclerDanhSachSanPhamUse;
+    public static RecyclerView recyclerDanhSachSanPhamUse;
 
     @Nullable
     @Override
@@ -38,12 +38,12 @@ public class FragRauDanhSachSanPhamUse extends Fragment {
         DanhSachSanPhamDAO danhSachSanPhamDAO = new DanhSachSanPhamDAO(getContext());
         ArrayList<DanhSachSanPhamDTO> list = danhSachSanPhamDAO.getDSSanPhamRau();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerDanhSachSanPhamUse.setLayoutManager(linearLayoutManager);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerDanhSachSanPhamUse.setLayoutManager(gridLayoutManager);
 
         AdapterDanhSachSanPham adapterDanhSachSanPham = new AdapterDanhSachSanPham(list, getContext());
         recyclerDanhSachSanPhamUse.setAdapter(adapterDanhSachSanPham);
+        adapterDanhSachSanPham.notifyDataSetChanged();
     }
 }

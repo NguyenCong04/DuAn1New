@@ -118,7 +118,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
 
-        android:id="@+id/tvBackDoiMatKhau"
+        android:id="@+id/ivBackDoiMatKhau"
 
         android:src="@drawable/icon_back"
         android:layout_marginStart="10dp"

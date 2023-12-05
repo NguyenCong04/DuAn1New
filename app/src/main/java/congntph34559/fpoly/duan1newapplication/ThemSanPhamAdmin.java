@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -44,10 +45,10 @@ import congntph34559.fpoly.duan1newapplication.DTO.SanPhamRauAdminDTO;
 public class ThemSanPhamAdmin extends AppCompatActivity {
 
 
-    private ImageView imgThemsp;
+    private ImageView imgThemsp,ivBack;
     private TextView captureTxt;
     EditText edtThemtensp, edtThemgiasp,edtNhaCungCap,edtMoTa;
-    Button btnThemsp;
+    AppCompatButton btnThemsp;
     TrangChuAdminDAO trangChuAdminDAO;
     Spinner spnCategoryThemSp;
 
@@ -87,6 +88,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_them_san_pham_admin);
 
         imgThemsp = findViewById(R.id.imgThemSp);
+        ivBack = findViewById(R.id.ivBackThemSanPham);
         captureTxt = findViewById(R.id.captireTXT);
         edtThemgiasp = findViewById(R.id.edtThemGiaSp);
         edtThemtensp = findViewById(R.id.edtThemTenSp);
@@ -134,6 +136,15 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
+            }
+        });
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+                finish();
+
             }
         });
 

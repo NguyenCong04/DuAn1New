@@ -30,10 +30,11 @@ import congntph34559.fpoly.duan1newapplication.ThemSanPhamAdmin;
 
 public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
-    private RecyclerView recyclerViewRauAdmin;
+    public static RecyclerView recyclerViewRauAdmin;
     private FloatingActionButton fltRauAdmin;
 
     private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
         });
 
 
-         recyclerViewRauAdmin.setOnLongClickListener(new View.OnLongClickListener() {
+        recyclerViewRauAdmin.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 startActivity(new Intent(getContext(), SuaSanPhamAdmin.class));
@@ -68,21 +69,20 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
         });
 
 
-
     }
 
-    private void intiData(){
+    private void intiData() {
         TrangChuAdminDAO trangChuAdminDAO = new TrangChuAdminDAO(getContext());
         ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamRauAdmin();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerViewRauAdmin.setLayoutManager(gridLayoutManager);
-        AdapterSanPhamRauAdmin adapterSanPhamRauAdmin = new AdapterSanPhamRauAdmin(list,getContext(), listener);
+        AdapterSanPhamRauAdmin adapterSanPhamRauAdmin = new AdapterSanPhamRauAdmin(list, getContext(), listener);
         recyclerViewRauAdmin.setAdapter(adapterSanPhamRauAdmin);
         adapterSanPhamRauAdmin.notifyDataSetChanged();
 //        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         intiData();
     }

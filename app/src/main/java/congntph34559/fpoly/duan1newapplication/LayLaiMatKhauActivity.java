@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
     private AppCompatButton btnDoiMatKhau;
     private TaiKhoanDAO taiKhoanDAO;
     private List<TaiKhoanDTO> list;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lay_lai_mat_khau);
 
         //Ánh xạ view
+        ivBack = findViewById(R.id.ivBackDoiMatKhau);
         edLaiMatKhauMoi = findViewById(R.id.edLaiMatKhauMoiLayLaiMatKhau);
         edMatKhauMoi = findViewById(R.id.edMatKhauMoiLayLaiMatKhau);
         btnDoiMatKhau = findViewById(R.id.btnDoiMatKhacLayLaiMatKhau);
@@ -100,6 +103,17 @@ public class LayLaiMatKhauActivity extends AppCompatActivity {
 
             }
         });
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(LayLaiMatKhauActivity.this,XacNhanTaiKhoanActivity.class));
+                finish();
+
+            }
+        });
+
 
 
     }

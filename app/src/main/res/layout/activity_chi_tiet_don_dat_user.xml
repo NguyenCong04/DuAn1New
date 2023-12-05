@@ -72,6 +72,7 @@
                     android:text="Địa chỉ nhận hàng"
                     android:fontFamily="serif"
                     android:textStyle="bold"
+                    android:textColor="@android:color/black"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -176,9 +177,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Trạng thái"
+                android:fontFamily="serif"
+                android:textColor="@android:color/black"
+                android:gravity="end"
+                android:textSize="13sp"
+                android:id="@+id/tvTrangThai"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Danh sách sản phẩm: "
                 android:fontFamily="serif"
                 android:textStyle="bold"
+                android:textColor="@android:color/black"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -192,6 +205,7 @@
                 android:layout_marginStart="5dp"
                 android:textSize="13sp"
                 />
+
 
             <View
                 android:layout_width="match_parent"
@@ -211,6 +225,7 @@
                 android:fontFamily="serif"
                 android:textStyle="bold"
                 android:gravity="right"
+                android:textColor="@android:color/black"
 
                 />
             <View
