@@ -1,12 +1,14 @@
 package congntph34559.fpoly.duan1newapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ import congntph34559.fpoly.duan1newapplication.DTO.SanPhamRauAdminDTO;
 public class SuaSanPhamAdmin extends AppCompatActivity {
     EditText edtSuatensp, edtSuaGiasp, edtSuaNhaCungCap, edtSuaMoTa;
 
+
     Button btnSuasp;
     Spinner spnCategorySuaSp;
 
@@ -34,6 +37,9 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
     private TrangChuAdminDAO dao;
 
     private MyDBHelper dbHelper;
+
+    int positionSpinner = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +52,13 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
         edtSuaMoTa = findViewById(R.id.edtSuaMoTa);
         spnCategorySuaSp = findViewById(R.id.spnCategorySuaSp);
 
+
         dbHelper = new MyDBHelper(SuaSanPhamAdmin.this);
         dao = new TrangChuAdminDAO(SuaSanPhamAdmin.this);
 
         getDataIntent();
+
+        getDataAdmin(spnCategorySuaSp);
 
 
         btnSuasp.setOnClickListener(new View.OnClickListener() {
@@ -59,33 +68,72 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
                 String newName = edtSuatensp.getText().toString().trim();
                 String newPrice = edtSuaGiasp.getText().toString().trim();
 
-                if(newName.equals("") || String.valueOf(newPrice).equals("")){
+                if (newName.equals("") || String.valueOf(newPrice).equals("")) {
                     Toast.makeText(SuaSanPhamAdmin.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }else {
-                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice));
-                    if (result){
+                } else {
+                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice), getTenLoai((int) spnCategorySuaSp.getSelectedItemId()));
+                    if (result) {
                         Toast.makeText(SuaSanPhamAdmin.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         onBackPressed();
                     }
                 }
-
-
             }
         });
 
-
-
     }
+
+    private String getTenLoai(int positionSpinner) {
+        String tenLoai = "";
+
+        switch (positionSpinner) {
+            case 0:
+                tenLoai = "Rau";
+                break;
+            case 1:
+                tenLoai = "Củ";
+                break;
+            case 2:
+                tenLoai = "Quả";
+                break;
+        }
+
+        return tenLoai;
+    }
+
+    private void getDataAdmin(Spinner spinnerAdmin) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add(new String("Rau"));
+        list.add(new String("Củ"));
+        list.add(new String("Quả"));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        spinnerAdmin.setAdapter(adapter);
+
+        spinnerAdmin.setSelection(positionSpinner);
+    }
+
 
     private void getDataIntent() {
         Intent intent = getIntent();
-        if (intent != null){
+        if (intent != null) {
             dto = (SanPhamRauAdminDTO) intent.getSerializableExtra("dto");
             edtSuatensp.setText(dto.getTen_san_pham());
             edtSuaGiasp.setText(String.valueOf(dto.getDon_gia()));
             edtSuaNhaCungCap.setText(dto.getNhacungcap());
             edtSuaMoTa.setText(dto.getMo_ta());
 
+
+            switch (dto.getLoai()) {
+                case "Rau":
+                    positionSpinner = 0;
+                    break;
+                case "Củ":
+                    positionSpinner = 1;
+                    break;
+                case "Quả":
+                    positionSpinner = 2;
+                    break;
+            }
+            spnCategorySuaSp.setSelection(positionSpinner);
         }
     }
 

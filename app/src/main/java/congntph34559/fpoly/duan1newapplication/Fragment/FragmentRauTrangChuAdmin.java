@@ -2,6 +2,7 @@ package congntph34559.fpoly.duan1newapplication.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,10 +32,12 @@ import congntph34559.fpoly.duan1newapplication.ThemSanPhamAdmin;
 
 public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPhamRauAdmin.SanPhamAdminInterface {
 
+
     private RecyclerView recyclerViewRauAdmin;
     private FloatingActionButton fltRauAdmin;
 
     private AdapterSanPhamRauAdmin.SanPhamAdminInterface listener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         listener = this;
         recyclerViewRauAdmin = view.findViewById(R.id.recyclerRauAdmin);
         fltRauAdmin = view.findViewById(R.id.fltAddRauAdmin);
@@ -54,35 +59,34 @@ public class FragmentRauTrangChuAdmin extends Fragment implements AdapterSanPham
         fltRauAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 startActivity(new Intent(getContext(), ThemSanPhamAdmin.class));
             }
         });
 
 
-         recyclerViewRauAdmin.setOnLongClickListener(new View.OnLongClickListener() {
+        recyclerViewRauAdmin.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 startActivity(new Intent(getContext(), SuaSanPhamAdmin.class));
                 return false;
             }
         });
-
-
-
     }
 
-    private void intiData(){
+    private void intiData() {
         TrangChuAdminDAO trangChuAdminDAO = new TrangChuAdminDAO(getContext());
         ArrayList<SanPhamRauAdminDTO> list = trangChuAdminDAO.getDSSanPhamRauAdmin();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         recyclerViewRauAdmin.setLayoutManager(gridLayoutManager);
-        AdapterSanPhamRauAdmin adapterSanPhamRauAdmin = new AdapterSanPhamRauAdmin(list,getContext(), listener);
+        AdapterSanPhamRauAdmin adapterSanPhamRauAdmin = new AdapterSanPhamRauAdmin(list, getContext(), listener);
         recyclerViewRauAdmin.setAdapter(adapterSanPhamRauAdmin);
         adapterSanPhamRauAdmin.notifyDataSetChanged();
 //        Toast.makeText(getContext(), ""+list.size(), Toast.LENGTH_SHORT).show();
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         intiData();
     }

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,15 +12,103 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thống kê sản phẩm bán chạy"
+            android:text="Thống Doanh Thu"
             android:textSize="20dp"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:fontFamily="serif"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerThongKe"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/background_lien_he"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thống kê doanh thu"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:fontFamily="serif"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày bắt đầu"
+            android:fontFamily="serif"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edtNgayBatDau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập ngày bắt đầu"
+            android:background="@drawable/custom_editttext_themsp"
+            android:padding="20dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày kết thúc"
+            android:textSize="20sp"
+            android:fontFamily="serif"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edtNgayKetThuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập ngày kết thúc"
+            android:background="@drawable/custom_editttext_themsp"
+            android:padding="20dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDoanhThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thống kê doanh thu"
+            android:background="@drawable/button_background_doi_pass"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bacground_doanh_thu"
+            android:layout_marginTop="30dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doanh Thu"
+                android:textSize="20sp"
+                android:fontFamily="serif"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/txtKetQua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_margin="10dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
 </LinearLayout>

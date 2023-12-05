@@ -7,27 +7,38 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import congntph34559.fpoly.duan1newapplication.DBHelper.MyDBHelper;
-import congntph34559.fpoly.duan1newapplication.DTO.ChiTietHoaDonAdminDTO;
 import congntph34559.fpoly.duan1newapplication.DTO.DanhSachSanPhamDTO;
 
 public class ThongKeDAO {
     MyDBHelper myDBHelper;
-
+    SQLiteDatabase sqLiteDatabase;
     public ThongKeDAO(Context context){
         myDBHelper = new MyDBHelper(context);
+        sqLiteDatabase = myDBHelper.getWritableDatabase();
     }
 
-    public ArrayList<ChiTietHoaDonAdminDTO> getTop10(){
-          ArrayList<ChiTietHoaDonAdminDTO> list = new ArrayList<>();
-          SQLiteDatabase sqLiteDatabase = myDBHelper.getReadableDatabase();
-          Cursor cursor = sqLiteDatabase.rawQuery("SELECT tb_san_pham.ten_san_pham, tb_san_pham.img_url, COUNT(tb_chi_tiet_hoa_don.id_san_pham) AS so_luong_ban FROM tb_chi_tiet_hoa_don JOIN tb_san_pham ON tb_chi_tiet_hoa_don.id_san_pham = tb_san_pham.id_san_pham GROUP BY tb_san_pham.id_san_pham ORDER BY so_luong_ban DESC LIMIT 10", null);
-          if(cursor.getCount()!=0){
-              cursor.moveToFirst();
-              do {
+    public int getDoanhThu(String ngaybatdau, String ngayketthuc){
+//        ngaybatdau = ngaybatdau.replace("/", "");
+//        ngayketthuc =  ngayketthuc.replace("/", "");
+//        SQLiteDatabase  sqLiteDatabase = myDBHelper.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(tong_tien) FROM tb_hoa_don WHERE ngay_dat  BETWEEN ? AND ?",new String[]{ngaybatdau, ngayketthuc});
+        ArrayList<Integer> list = new ArrayList<>();
 
-              }while (cursor.moveToNext());
-          }
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+          //  return cursor.getInt(0);
+            while (!cursor.isAfterLast()){
+                try {
+                    int doanhthu = cursor.getInt(0);
+                    list.add(doanhthu);
+                }catch (Exception e){
+                    list.get(0);
+                }
+                cursor.moveToNext();
 
-          return list;
+            }
+
+        }
+        return list.get(0);
     }
 }

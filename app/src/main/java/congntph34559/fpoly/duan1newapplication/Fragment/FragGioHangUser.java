@@ -231,7 +231,7 @@ public class FragGioHangUser extends Fragment {
                     objDonDat.setTenSanPham(finalHoaDon);
                     objDonDat.setSoDienThoai(soDienThoai);
                     objDonDat.setDiaChi(diaChi);
-                    objDonDat.setNgayDat(gioDat+" "+ngayDat);
+                    objDonDat.setNgayDat(ngayDat);
                     objDonDat.setTrangThai("Đã đặt");
                     objDonDat.setTongTien(tinhTongTienBottomSheet());
 

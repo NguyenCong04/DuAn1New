@@ -50,15 +50,17 @@ public class TrangChuAdminDAO {
         }
     }
 
-    public boolean SuaSanPham(int id_san_pham, String tensanpham, int dongia){
+    public boolean SuaSanPham(int id_san_pham, String tensanpham, int dongia, String loai){
         SQLiteDatabase sqLiteDatabase = myDBHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(" ten_san_pham", tensanpham);
         values.put(" don_gia ", dongia);
+        values.put("loai", loai);
 
         int check = sqLiteDatabase.update("tb_san_pham",values,"  id_san_pham =?",new String[]{String.valueOf(id_san_pham)});
-        return check !=0;
 
+        getDSSanPhamAdmin();
+        return check !=0;
     }
 
     public ArrayList<SanPhamRauAdminDTO> getDSSanPhamRauAdmin(){

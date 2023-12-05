@@ -15,6 +15,7 @@ public class DonDatUserDTO {
     public String soDienThoai;
     public String trangThai;
 
+
     public DonDatUserDTO() {
     }
 

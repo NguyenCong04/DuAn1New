@@ -12,6 +12,8 @@ public class DanhSachSanPhamDTO {
     private String nhacungcap;
     private String loai;
 
+    private int soluotmua;
+
 
     public DanhSachSanPhamDTO() {
     }
@@ -28,7 +30,37 @@ public class DanhSachSanPhamDTO {
         this.loai = loai;
     }
 
+    public DanhSachSanPhamDTO(String ten_san_pham, String img_url, int soluotmua) {
+        this.ten_san_pham = ten_san_pham;
+        this.img_url = img_url;
+        this.soluotmua = soluotmua;
+    }
 
+
+
+    public String getNhacungcap() {
+        return nhacungcap;
+    }
+
+    public void setNhacungcap(String nhacungcap) {
+        this.nhacungcap = nhacungcap;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+
+    public int getSoluotmua() {
+        return soluotmua;
+    }
+
+    public void setSoluotmua(int soluotmua) {
+        this.soluotmua = soluotmua;
+    }
 
     public int getId_san_pham() {
         return id_san_pham;

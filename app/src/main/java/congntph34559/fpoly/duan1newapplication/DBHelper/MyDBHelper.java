@@ -116,6 +116,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 ");\n";
         db.execSQL(sqlHoaDon);
 
+
         String sqlTaiKhoan = "CREATE TABLE tb_tai_khoan (\n" +
                 "    id_tai_khoan  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "    id_khach_hang INTEGER REFERENCES tb_khach_hang (id_khach_hang),\n" +

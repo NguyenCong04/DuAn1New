@@ -23,6 +23,10 @@ public class FragRauDanhSachSanPhamUse extends Fragment {
 
     RecyclerView recyclerDanhSachSanPhamUse;
 
+    
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

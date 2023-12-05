@@ -2,6 +2,10 @@ package congntph34559.fpoly.duan1newapplication.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -38,10 +44,25 @@ public class AdapterDanhSachSanPhamQua extends RecyclerView.Adapter<AdapterDanhS
     @Override
     public void onBindViewHolder(@NonNull ViewHolderQua holder, int position) {
 
-        String nameImg = list.get(position).getImg_url();
-        int resourceImg = ((Activity)context).getResources().getIdentifier(nameImg, "drawable",((Activity)context).getPackageName());
+//        String nameImg = list.get(position).getImg_url();
+//        int resourceImg = ((Activity)context).getResources().getIdentifier(nameImg, "drawable",((Activity)context).getPackageName());
+//
+//        holder.imgDanhSachSanPhamquaAdmin.setImageResource(resourceImg);
+        String base64 = list.get(position).getImg_url();
+        try {
+            byte[] imageBytes = android.util.Base64.decode(base64, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0 , imageBytes.length);
 
-        holder.imgDanhSachSanPhamquaAdmin.setImageResource(resourceImg);
+            if(bitmap != null){
+                holder.imgDanhSachSanPhamquaAdmin.setImageBitmap(bitmap);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+//        Glide.with(context).load(list.get(position).getImg_url()).into(holder.imgDanhSachSanPhamquaAdmin);
+
         holder.tvTenDanhSachSanPhamquaAdmin.setText(list.get(position).getTen_san_pham());
         holder.tvGiaSanPhamDanhSachSanPhamquaAdmin.setText(list.get(position).getDon_gia()+"VND / 1kg");
 

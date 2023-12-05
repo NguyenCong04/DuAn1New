@@ -105,7 +105,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
                 String tenloai = (String) spnCategoryThemSp.getSelectedItem();
                 String nhacungcap = edtNhaCungCap.getText().toString().trim();
                 String mota = edtMoTa.getText().toString().trim();
-
+                // Trong phương thức onClick của btnThemsp
 
                 if(tensp.equals("") || String.valueOf(giasp).equals("")){
                     Toast.makeText(ThemSanPhamAdmin.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -125,8 +125,6 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
 
                 }
 
-
-
             }
         });
 
@@ -137,9 +135,7 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
             }
         });
 
-        
-
-
+        getDataAdmin(spnCategoryThemSp);
     }
 
     private  void getDataAdmin(Spinner spinnerAdmin){
@@ -150,8 +146,6 @@ public class ThemSanPhamAdmin extends AppCompatActivity {
         list.add(new String("Quả"));
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
         spinnerAdmin.setAdapter(adapter);
-
-
     }
 
     private void selectImage() {
