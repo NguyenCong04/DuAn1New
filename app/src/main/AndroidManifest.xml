@@ -13,7 +13,61 @@
         android:theme="@style/Theme.DuAn1NewApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ViCuaToiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongTinCaNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LienHeGopYActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoiMatKhauUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CapNhatDonDatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDonDatAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThongTinCaNhanAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietDonDatUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChiTietSanPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LayLaiMatKhauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".XacNhanTaiKhoanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginSigUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DanhSachSanPhamUseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiaChiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemDiaChiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SuaSanPhamAdmin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ThemSanPhamAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
