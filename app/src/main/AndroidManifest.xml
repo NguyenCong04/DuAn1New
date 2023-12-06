@@ -31,9 +31,6 @@
             android:name=".ChiTietDonDatAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".ThongTinCaNhanAdminActivity"
-            android:exported="false" />
-        <activity
             android:name=".ChiTietDonDatUserActivity"
             android:exported="false" />
         <activity
