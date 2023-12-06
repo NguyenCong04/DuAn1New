@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -115,13 +116,14 @@ public class FragmentThongKeAdmin extends Fragment {
         btnDoanhThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
                 ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
                 String ngaybatdau = edtNgayBatDau.getText().toString();
                 String ngayketthuc = edtNgayKetThuc.getText().toString();
                 int doanhthu = thongKeDAO.getDoanhThu(ngaybatdau, ngayketthuc);
 
                 if (doanhthu > 0) {
-                    txtKetQua.setText(doanhthu+"VND");
+                    txtKetQua.setText(decimalFormat.format(doanhthu)+" VND");
                 }else {
 
                     txtKetQua.setText("Không có dữ liệu");
