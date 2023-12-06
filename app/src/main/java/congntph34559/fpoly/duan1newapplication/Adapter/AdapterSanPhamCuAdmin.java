@@ -60,6 +60,10 @@ public class AdapterSanPhamCuAdmin extends RecyclerView.Adapter<AdapterSanPhamCu
 
         SanPhamRauAdminDTO id = list.get(position);
 
+        String nameImg = list.get(position).getImg_url();
+        int resourceImg = ((Activity) context).getResources().getIdentifier(nameImg, "drawable", ((Activity) context).getPackageName());
+        holder.imgDanhSachSanPhamAdmin.setImageResource(resourceImg);
+
         String base64 = list.get(position).getImg_url();
         try {
             byte[] imageBytes = android.util.Base64.decode(base64, Base64.DEFAULT);
