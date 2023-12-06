@@ -69,11 +69,12 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
 
                 String newName = edtSuatensp.getText().toString().trim();
                 String newPrice = edtSuaGiasp.getText().toString().trim();
+                String mota = edtSuaMoTa.getText().toString().trim();
 
                 if (newName.equals("") || String.valueOf(newPrice).equals("")) {
                     Toast.makeText(SuaSanPhamAdmin.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else {
-                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice), getTenLoai((int) spnCategorySuaSp.getSelectedItemId()));
+                    boolean result = dao.SuaSanPham(dto.getId_san_pham(), newName, Integer.parseInt(newPrice), mota, getTenLoai((int) spnCategorySuaSp.getSelectedItemId()));
                     if (result) {
                         Toast.makeText(SuaSanPhamAdmin.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
                         onBackPressed();
@@ -97,7 +98,6 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
 
     private String getTenLoai(int positionSpinner) {
         String tenLoai = "";
-
 
         switch (positionSpinner) {
             case 0:
@@ -130,6 +130,7 @@ public class SuaSanPhamAdmin extends AppCompatActivity {
             edtSuatensp.setText(dto.getTen_san_pham());
             edtSuaGiasp.setText(String.valueOf(dto.getDon_gia()));
             edtSuaNhaCungCap.setText(dto.getNhacungcap());
+            edtSuaMoTa.setText(dto.getMo_ta());
             edtSuaMoTa.setText(dto.getMo_ta());
 
 
