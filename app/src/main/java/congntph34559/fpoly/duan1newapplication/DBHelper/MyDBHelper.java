@@ -89,8 +89,13 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 "Lycopene: Là một chất chống oxy hóa mạnh, có tác dụng ngăn ngừa ung thư, tim mạch, và các bệnh mãn tính khác.\n" +
                 "Chất xơ: Có tác dụng hỗ trợ tiêu hóa, giảm cholesterol.\n" +
                 "Khoáng chất: Cà chua có chứa nhiều khoáng chất cần thiết cho cơ thể, như: kali, magie, canxi, kẽm,...',6,'Nguyễn Huy','Quả')");
-        db.execSQL("insert into tb_san_pham values (9,2,'Quả cam',13000,'img_qua_cam','12345',7,'Nguyễn Anh','Quả')");
-        db.execSQL("insert into tb_san_pham values (10,2,'Quả chuối',14000,'img_qua_chuoi','12345',8,'Nguyễn','Quả')");
+        db.execSQL("insert into tb_san_pham values (9,2,'Quả cam',13000,'img_qua_cam','\n" +
+                "Cam là một loại quả có múi, có nguồn gốc từ Đông Nam Á. Đây là một loại quả phổ biến trên thế giới, được trồng ở nhiều quốc gia khác nhau, trong đó có Việt Nam.\n" +
+                "\n" +
+                "Quả cam có hình tròn hoặc hình bầu dục, có kích thước trung bình từ 5-10 cm. Vỏ cam có màu xanh khi còn non và chuyển sang màu vàng cam khi chín. Vỏ cam sần sùi, có nhiều nốt nhỏ.\n" +
+                "\n" +
+                "Phần thịt cam màu vàng cam, có vị ngọt hoặc chua ngọt tùy theo giống cam. Thịt cam có nhiều múi, mỗi múi có nhiều tép. Tép cam có vị ngọt thanh, có tác dụng giải khát, bổ sung vitamin C và các dưỡng chất khác cho cơ thể.',7,'Nguyễn Anh','Quả')");
+        db.execSQL("insert into tb_san_pham values (10,2,'Quả chuối',14000,'img_qua_chuoi','Chuối là một loại quả giàu dinh dưỡng, chứa nhiều vitamin C, vitamin B6, kali, chất xơ,... Đây là một loại quả tốt cho sức khỏe, có tác dụng tăng cường hệ miễn dịch, chống oxy hóa, ngăn ngừa bệnh tim mạch,...',8,'Nguyễn','Quả')");
 
         String sqlThongTinKhachHang = "CREATE TABLE tb_thong_tin_khach_hang (\n" +
                 "    id_khach_hang  INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
