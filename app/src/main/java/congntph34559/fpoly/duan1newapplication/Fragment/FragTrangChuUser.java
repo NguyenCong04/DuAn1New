@@ -190,13 +190,10 @@ public class FragTrangChuUser extends Fragment {
         if (listSeach.size() > 0) {
 
             adapterTrangChuUser = new AdapterTrangChuUser(getContext(),listSeach);
-            Toast.makeText(getContext(), "Có "+listSeach.size()+" sản phẩm bạn muốn tìm"
-                    , Toast.LENGTH_SHORT).show();
 
         }else {
 
             adapterTrangChuUser = new AdapterTrangChuUser(getContext(),list);
-            Toast.makeText(getContext(), "Không tìm thấy sản phẩm", Toast.LENGTH_SHORT).show();
 
         }
         recyclerView.setAdapter(adapterTrangChuUser);
