@@ -70,6 +70,7 @@ public class AdapterDonDangGiaoUser extends RecyclerView.Adapter<AdapterDonDangG
                 intent.putExtra("tenSanPham", id.getTenSanPham());
                 intent.putExtra("tongTien", id.getTongTien());
                 intent.putExtra("ngayDat", id.getNgayDat());
+                intent.putExtra("trangThai",id.getTrangThai());
                 ((Activity) context).startActivity(intent);
             }
         });
